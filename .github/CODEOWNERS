@@ -1,0 +1,25 @@
+# Default owners
+* @julianoczkowski
+
+# Documentation
+*.md @julianoczkowski
+README.md @julianoczkowski
+
+# Application code
+app/ @julianoczkowski
+types/ @julianoczkowski
+
+# Tooling and configuration
+.github/ @julianoczkowski
+scripts/ @julianoczkowski
+package.json @julianoczkowski
+tsconfig.json @julianoczkowski
+next.config.ts @julianoczkowski
+postcss.config.mjs @julianoczkowski
+eslint.config.mjs @julianoczkowski
+
+# Custom rules
+.cursor/rules/ @julianoczkowski
+
+# Scripts
+scripts/ @julianoczkowski

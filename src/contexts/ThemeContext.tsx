@@ -46,11 +46,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
     const html = document.documentElement;
 
-    // Set theme attributes
+    // Set theme attribute (official Modus way)
     html.setAttribute("data-theme", theme);
-    html.setAttribute("data-mode", isDark ? "dark" : "light");
-    html.classList.remove("light", "dark");
-    html.classList.add(isDark ? "dark" : "light");
 
     // Save to localStorage
     if (typeof window !== "undefined") {
@@ -60,7 +57,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
         console.warn("Unable to persist theme preference:", error);
       }
     }
-  }, [theme, isDark, mounted]);
+  }, [theme, mounted]);
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);

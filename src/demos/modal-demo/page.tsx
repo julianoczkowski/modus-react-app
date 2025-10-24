@@ -1,18 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useRef } from "react";
 import DemoExample from "../../components/DemoExample";
 import DemoPage from "../../components/DemoPage";
 import ModusButton from "../../components/ModusButton";
-import ModusModal from "../../components/ModusModal";
+import ModusModal, { type ModusModalRef } from "../../components/ModusModal";
 
 export default function ModalDemoPage() {
-  const [isCenteredOpen, setIsCenteredOpen] = useState(false);
-  const [isTopOpen, setIsTopOpen] = useState(false);
-  const [isBottomOpen, setIsBottomOpen] = useState(false);
-  const [isFullscreenOpen, setIsFullscreenOpen] = useState(false);
-  const [isStaticOpen, setIsStaticOpen] = useState(false);
-  const [isCustomOpen, setIsCustomOpen] = useState(false);
+  // Modal refs for controlling modals
+  const centeredModalRef = useRef<ModusModalRef>(null);
+  const topModalRef = useRef<ModusModalRef>(null);
+  const bottomModalRef = useRef<ModusModalRef>(null);
+  const fullscreenModalRef = useRef<ModusModalRef>(null);
+  const staticModalRef = useRef<ModusModalRef>(null);
+  const customModalRef = useRef<ModusModalRef>(null);
 
   return (
     <DemoPage
@@ -24,14 +25,18 @@ export default function ModalDemoPage() {
         description="Default centered modal for quick confirmations or lightweight forms."
       >
         <div className="space-y-4">
-          <ModusButton onButtonClick={() => setIsCenteredOpen(true)}>
+          <ModusButton
+            onButtonClick={() => {
+              centeredModalRef.current?.openModal();
+            }}
+          >
             Open Centered Modal
           </ModusButton>
           <ModusModal
+            ref={centeredModalRef}
             modalId="modal-centered"
             ariaLabel="Archive project"
-            isOpen={isCenteredOpen}
-            onClose={() => setIsCenteredOpen(false)}
+            onClose={() => {}}
             header={
               <div className="text-xl font-semibold text-foreground">
                 Archive project
@@ -41,13 +46,17 @@ export default function ModalDemoPage() {
               <div className="flex gap-2">
                 <ModusButton
                   variant="borderless"
-                  onButtonClick={() => setIsCenteredOpen(false)}
+                  onButtonClick={() => {
+                    centeredModalRef.current?.closeModal();
+                  }}
                 >
                   Cancel
                 </ModusButton>
                 <ModusButton
                   color="danger"
-                  onButtonClick={() => setIsCenteredOpen(false)}
+                  onButtonClick={() => {
+                    centeredModalRef.current?.closeModal();
+                  }}
                 >
                   Archive
                 </ModusButton>
@@ -67,19 +76,27 @@ export default function ModalDemoPage() {
         description="Different vertical positions for various use cases."
       >
         <div className="flex gap-4 flex-wrap">
-          <ModusButton onButtonClick={() => setIsTopOpen(true)}>
+          <ModusButton
+            onButtonClick={() => {
+              topModalRef.current?.openModal();
+            }}
+          >
             Top Position
           </ModusButton>
-          <ModusButton onButtonClick={() => setIsBottomOpen(true)}>
+          <ModusButton
+            onButtonClick={() => {
+              bottomModalRef.current?.openModal();
+            }}
+          >
             Bottom Position
           </ModusButton>
         </div>
 
         <ModusModal
+          ref={topModalRef}
           modalId="modal-top"
           ariaLabel="Top positioned modal"
-          isOpen={isTopOpen}
-          onClose={() => setIsTopOpen(false)}
+          onClose={() => {}}
           position="top"
           header={
             <div className="text-xl font-semibold text-foreground">
@@ -90,11 +107,17 @@ export default function ModalDemoPage() {
             <div className="flex gap-2">
               <ModusButton
                 variant="borderless"
-                onButtonClick={() => setIsTopOpen(false)}
+                onButtonClick={() => {
+                  topModalRef.current?.closeModal();
+                }}
               >
                 Cancel
               </ModusButton>
-              <ModusButton onButtonClick={() => setIsTopOpen(false)}>
+              <ModusButton
+                onButtonClick={() => {
+                  topModalRef.current?.closeModal();
+                }}
+              >
                 Confirm
               </ModusButton>
             </div>
@@ -107,10 +130,10 @@ export default function ModalDemoPage() {
         </ModusModal>
 
         <ModusModal
+          ref={bottomModalRef}
           modalId="modal-bottom"
           ariaLabel="Bottom positioned modal"
-          isOpen={isBottomOpen}
-          onClose={() => setIsBottomOpen(false)}
+          onClose={() => {}}
           position="bottom"
           header={
             <div className="text-xl font-semibold text-foreground">
@@ -121,11 +144,17 @@ export default function ModalDemoPage() {
             <div className="flex gap-2">
               <ModusButton
                 variant="borderless"
-                onButtonClick={() => setIsBottomOpen(false)}
+                onButtonClick={() => {
+                  bottomModalRef.current?.closeModal();
+                }}
               >
                 Cancel
               </ModusButton>
-              <ModusButton onButtonClick={() => setIsBottomOpen(false)}>
+              <ModusButton
+                onButtonClick={() => {
+                  bottomModalRef.current?.closeModal();
+                }}
+              >
                 Confirm
               </ModusButton>
             </div>
@@ -143,14 +172,18 @@ export default function ModalDemoPage() {
         description="Full-screen modals for complex workflows or detailed content."
       >
         <div className="space-y-4">
-          <ModusButton onButtonClick={() => setIsFullscreenOpen(true)}>
+          <ModusButton
+            onButtonClick={() => {
+              fullscreenModalRef.current?.openModal();
+            }}
+          >
             Open Fullscreen Modal
           </ModusButton>
           <ModusModal
+            ref={fullscreenModalRef}
             modalId="modal-fullscreen"
             ariaLabel="Fullscreen modal"
-            isOpen={isFullscreenOpen}
-            onClose={() => setIsFullscreenOpen(false)}
+            onClose={() => {}}
             fullscreen={true}
             showFullscreenToggle={true}
             header={
@@ -162,11 +195,17 @@ export default function ModalDemoPage() {
               <div className="flex gap-2">
                 <ModusButton
                   variant="borderless"
-                  onButtonClick={() => setIsFullscreenOpen(false)}
+                  onButtonClick={() => {
+                    fullscreenModalRef.current?.closeModal();
+                  }}
                 >
                   Cancel
                 </ModusButton>
-                <ModusButton onButtonClick={() => setIsFullscreenOpen(false)}>
+                <ModusButton
+                  onButtonClick={() => {
+                    fullscreenModalRef.current?.closeModal();
+                  }}
+                >
                   Save Changes
                 </ModusButton>
               </div>
@@ -191,14 +230,18 @@ export default function ModalDemoPage() {
         description="Modal that doesn't close when clicking outside - user must use explicit actions."
       >
         <div className="space-y-4">
-          <ModusButton onButtonClick={() => setIsStaticOpen(true)}>
+          <ModusButton
+            onButtonClick={() => {
+              staticModalRef.current?.openModal();
+            }}
+          >
             Open Static Modal
           </ModusButton>
           <ModusModal
+            ref={staticModalRef}
             modalId="modal-static"
             ariaLabel="Static backdrop modal"
-            isOpen={isStaticOpen}
-            onClose={() => setIsStaticOpen(false)}
+            onClose={() => {}}
             backdrop="static"
             header={
               <div className="text-xl font-semibold text-foreground">
@@ -209,13 +252,17 @@ export default function ModalDemoPage() {
               <div className="flex gap-2">
                 <ModusButton
                   variant="borderless"
-                  onButtonClick={() => setIsStaticOpen(false)}
+                  onButtonClick={() => {
+                    staticModalRef.current?.closeModal();
+                  }}
                 >
                   Cancel
                 </ModusButton>
                 <ModusButton
                   color="danger"
-                  onButtonClick={() => setIsStaticOpen(false)}
+                  onButtonClick={() => {
+                    staticModalRef.current?.closeModal();
+                  }}
                 >
                   Delete Forever
                 </ModusButton>
@@ -235,14 +282,18 @@ export default function ModalDemoPage() {
         description="Modal with custom dimensions and styling."
       >
         <div className="space-y-4">
-          <ModusButton onButtonClick={() => setIsCustomOpen(true)}>
+          <ModusButton
+            onButtonClick={() => {
+              customModalRef.current?.openModal();
+            }}
+          >
             Open Custom Modal
           </ModusButton>
           <ModusModal
+            ref={customModalRef}
             modalId="modal-custom"
             ariaLabel="Custom styled modal"
-            isOpen={isCustomOpen}
-            onClose={() => setIsCustomOpen(false)}
+            onClose={() => {}}
             customClass="expanded-modal"
             header={
               <div className="text-xl font-semibold text-foreground">
@@ -253,11 +304,17 @@ export default function ModalDemoPage() {
               <div className="flex gap-2">
                 <ModusButton
                   variant="borderless"
-                  onButtonClick={() => setIsCustomOpen(false)}
+                  onButtonClick={() => {
+                    customModalRef.current?.closeModal();
+                  }}
                 >
                   Cancel
                 </ModusButton>
-                <ModusButton onButtonClick={() => setIsCustomOpen(false)}>
+                <ModusButton
+                  onButtonClick={() => {
+                    customModalRef.current?.closeModal();
+                  }}
+                >
                   Save
                 </ModusButton>
               </div>

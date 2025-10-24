@@ -1,8 +1,6 @@
-
-
 import { ModusWcModal } from "@trimble-oss/moduswebcomponents-react";
 import type { ReactNode } from "react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 
 interface ModusModalProps {
   // Modal identification
@@ -22,87 +20,104 @@ interface ModusModalProps {
   children: ReactNode; // Content slot
   footer?: ReactNode;
 
-  // State management
-  isOpen?: boolean;
+  // Event handling
   onClose?: () => void;
 
   // Styling
   className?: string;
 }
 
-export default function ModusModal({
-  modalId,
-  ariaLabel,
-  backdrop = "default",
-  position = "center",
-  fullscreen = false,
-  showFullscreenToggle = false,
-  showClose = true,
-  customClass,
-  header,
-  children,
-  footer,
-  isOpen = false,
-  onClose,
-  className,
-}: ModusModalProps) {
-  const modalRef = useRef<HTMLModusWcModalElement>(null);
-
-  // Control modal visibility
-  useEffect(() => {
-    const modal = modalRef.current;
-    if (modal) {
-      if (isOpen) {
-        // Find the inner dialog element and call showModal
-        const dialogElement = modal.querySelector("dialog");
-        if (dialogElement) {
-          dialogElement.showModal();
-        }
-      } else {
-        // Find the inner dialog element and call close
-        const dialogElement = modal.querySelector("dialog");
-        if (dialogElement) {
-          dialogElement.close();
-        }
-      }
-    }
-  }, [isOpen]);
-
-  // Handle modal events
-  useEffect(() => {
-    const modal = modalRef.current;
-    if (modal) {
-      const handleClose = () => {
-        onClose?.();
-      };
-
-      // Listen for modal close events on the inner dialog
-      const dialogElement = modal.querySelector("dialog");
-      if (dialogElement) {
-        dialogElement.addEventListener("close", handleClose);
-
-        return () => {
-          dialogElement.removeEventListener("close", handleClose);
-        };
-      }
-    }
-  }, [onClose]);
-
-  return (
-    <ModusWcModal
-      ref={modalRef}
-      modal-id={modalId}
-      aria-label={ariaLabel}
-      backdrop={backdrop}
-      position={position}
-      fullscreen={fullscreen}
-      show-fullscreen-toggle={showFullscreenToggle}
-      show-close={showClose}
-      custom-class={customClass || className}
-    >
-      {header && <div slot="header">{header}</div>}
-      <div slot="content">{children}</div>
-      {footer && <div slot="footer">{footer}</div>}
-    </ModusWcModal>
-  );
+export interface ModusModalRef {
+  openModal: () => void;
+  closeModal: () => void;
 }
+
+const ModusModal = forwardRef<ModusModalRef, ModusModalProps>(
+  (
+    {
+      modalId,
+      ariaLabel,
+      backdrop = "default",
+      position = "center",
+      fullscreen = false,
+      showFullscreenToggle = false,
+      showClose = true,
+      customClass,
+      header,
+      children,
+      footer,
+      onClose,
+      className,
+    },
+    ref
+  ) => {
+    const modalRef = useRef<HTMLModusWcModalElement>(null);
+
+    const openModal = () => {
+      if (modalRef.current) {
+        const dialog = modalRef.current.querySelector(
+          "dialog"
+        ) as HTMLDialogElement;
+        if (dialog) {
+          dialog.showModal();
+        }
+      }
+    };
+
+    const closeModal = () => {
+      if (modalRef.current) {
+        const dialog = modalRef.current.querySelector(
+          "dialog"
+        ) as HTMLDialogElement;
+        if (dialog) {
+          dialog.close();
+        }
+      }
+    };
+
+    useImperativeHandle(ref, () => ({
+      openModal,
+      closeModal,
+    }));
+
+    // Handle modal events
+    useEffect(() => {
+      const modal = modalRef.current;
+      if (modal) {
+        const handleClose = () => {
+          onClose?.();
+        };
+
+        const dialogElement = modal.querySelector("dialog");
+        if (dialogElement) {
+          dialogElement.addEventListener("close", handleClose);
+          return () => {
+            dialogElement.removeEventListener("close", handleClose);
+          };
+        }
+      }
+    }, [onClose]);
+
+    return (
+      <ModusWcModal
+        ref={modalRef}
+        modal-id={modalId}
+        aria-label={ariaLabel}
+        backdrop={backdrop}
+        position={position}
+        fullscreen={fullscreen}
+        show-fullscreen-toggle={showFullscreenToggle}
+        show-close={showClose}
+        custom-class={customClass || className}
+      >
+        {header && <div slot="header">{header}</div>}
+        <div slot="content">{children}</div>
+        {footer && <div slot="footer">{footer}</div>}
+      </ModusWcModal>
+    );
+  }
+);
+
+ModusModal.displayName = "ModusModal";
+
+export default ModusModal;

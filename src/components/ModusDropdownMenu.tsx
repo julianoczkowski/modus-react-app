@@ -1,9 +1,7 @@
 import { useEffect, useRef } from "react";
 import type { ReactNode } from "react";
-import {
-  ModusWcDropdownMenu,
-  ModusWcMenuItem,
-} from "@trimble-oss/moduswebcomponents-react";
+import { ModusWcDropdownMenu } from "@trimble-oss/moduswebcomponents-react";
+import ModusMenuItem from "./ModusMenuItem";
 import type { MenuItem } from "./ModusMenu";
 
 export interface ModusDropdownMenuProps {
@@ -108,15 +106,16 @@ export default function ModusDropdownMenu({
       <div slot="menu">
         {menuItems
           ? menuItems.map((item) => (
-              <ModusWcMenuItem
+              <ModusMenuItem
                 key={item.value}
                 label={item.label}
                 value={item.value}
-                sub-label={item.subLabel}
-                start-icon={item.startIcon}
+                subLabel={item.subLabel}
+                startIcon={item.startIcon}
                 selected={item.selected}
                 disabled={item.disabled}
                 bordered={item.bordered}
+                onItemSelect={onItemSelect}
               />
             ))
           : children}

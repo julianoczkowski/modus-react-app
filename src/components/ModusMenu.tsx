@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import {
-  ModusWcMenu,
-  ModusWcMenuItem,
-} from "@trimble-oss/moduswebcomponents-react";
+import { ModusWcMenu } from "@trimble-oss/moduswebcomponents-react";
+import ModusMenuItem from "./ModusMenuItem";
 
 export interface MenuItem {
   label: string;
@@ -79,15 +77,16 @@ export default function ModusMenu({
       aria-label={ariaLabel}
     >
       {items.map((item, index) => (
-        <ModusWcMenuItem
+        <ModusMenuItem
           key={`${item.value}-${index}`}
           label={item.label}
           value={item.value}
-          sub-label={item.subLabel}
-          start-icon={item.startIcon}
+          subLabel={item.subLabel}
+          startIcon={item.startIcon}
           selected={selectedValue === item.value || item.selected}
           disabled={item.disabled}
           bordered={item.bordered}
+          onItemSelect={handleItemSelect}
         />
       ))}
     </ModusWcMenu>

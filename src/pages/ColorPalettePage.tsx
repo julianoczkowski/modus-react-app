@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import DemoExample, { DemoExampleClean } from "../components/DemoExample";
+
+import DemoPage from "../components/DemoPage";
 
 export default function ColorPalettePage() {
   const [mounted, setMounted] = useState(false);
@@ -185,111 +188,86 @@ export default function ColorPalettePage() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto p-8">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <div className="text-4xl font-semibold mb-4 text-foreground">
-          Color Palette
-        </div>
-        <div className="text-lg leading-relaxed text-foreground text-center">
-          Visual reference for all colors in the Modus Design System. These
-          colors automatically adapt to the current theme (Classic Light/Dark,
-          Modern Light/Dark).
-        </div>
-      </div>
-
-      {/* Color Groups */}
-      <div className="space-y-12">
-        {colorGroups.map((group, groupIndex) => (
-          <div key={groupIndex} className="mb-12">
-            <div className="mb-6">
-              <div className="text-2xl font-semibold mb-2 text-foreground">
-                {group.title}
-              </div>
-              <div className="text-base text-foreground opacity-80">
-                {group.description}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {group.colors.map((color, colorIndex) => (
+    <DemoPage
+      title="Color Palette"
+      description="Visual reference for all colors in the Modus Design System. These colors automatically adapt to the current theme (Classic Light/Dark, Modern Light/Dark)."
+    >
+      {colorGroups.map((group, groupIndex) => (
+        <DemoExampleClean
+          key={groupIndex}
+          title={group.title}
+          description={group.description}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {group.colors.map((color, colorIndex) => (
+              <div
+                key={colorIndex}
+                className="bg-card rounded-lg p-6 color-card border-thick-dashed"
+              >
+                {/* Color Swatch */}
                 <div
-                  key={colorIndex}
-                  className="bg-card rounded-lg p-6 color-card border-thick-dashed"
-                >
-                  {/* Color Swatch */}
-                  <div
-                    className={`rounded-lg w-full h-24 mb-4 ${
-                      color.name.includes("foreground")
-                        ? ""
-                        : color.tailwindClass
-                    }`}
-                    style={{
-                      backgroundColor:
-                        color.name === "border" || color.name === "ring"
-                          ? `var(${color.cssVar})`
-                          : color.name.includes("foreground")
-                          ? color.name === "destructive-foreground"
-                            ? `var(--destructive)`
-                            : color.name === "success-foreground"
-                            ? `var(--success)`
-                            : color.name === "primary-foreground" ||
-                              color.name === "accent-foreground" ||
-                              color.name === "sidebar-primary-foreground" ||
-                              color.name === "sidebar-accent-foreground"
-                            ? `var(--primary)`
-                            : `var(--background)`
-                          : undefined,
-                      border:
-                        color.name === "border"
-                          ? `1px solid var(${color.cssVar})`
-                          : "1px solid var(--border)",
-                      boxShadow:
-                        color.name === "ring"
-                          ? `0 0 0 2px var(${color.cssVar})`
-                          : undefined,
-                      color: color.name.includes("foreground")
+                  className={`rounded-lg w-full h-24 mb-4 ${
+                    color.name.includes("foreground") ? "" : color.tailwindClass
+                  }`}
+                  style={{
+                    backgroundColor:
+                      color.name === "border" || color.name === "ring"
                         ? `var(${color.cssVar})`
+                        : color.name.includes("foreground")
+                        ? color.name === "destructive-foreground"
+                          ? `var(--destructive)`
+                          : color.name === "success-foreground"
+                          ? `var(--success)`
+                          : color.name === "primary-foreground" ||
+                            color.name === "accent-foreground" ||
+                            color.name === "sidebar-primary-foreground" ||
+                            color.name === "sidebar-accent-foreground"
+                          ? `var(--primary)`
+                          : `var(--background)`
                         : undefined,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "1.5rem",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {color.name.includes("foreground") && "Aa"}
-                  </div>
+                    border:
+                      color.name === "border"
+                        ? `1px solid var(${color.cssVar})`
+                        : "1px solid var(--border)",
+                    boxShadow:
+                      color.name === "ring"
+                        ? `0 0 0 2px var(${color.cssVar})`
+                        : undefined,
+                    color: color.name.includes("foreground")
+                      ? `var(${color.cssVar})`
+                      : undefined,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "1.5rem",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {color.name.includes("foreground") && "Aa"}
+                </div>
 
-                  {/* Color Info */}
-                  <div className="space-y-2">
-                    <div className="text-sm font-medium text-foreground">
-                      {color.name}
-                    </div>
-                    <div className="text-xs text-foreground opacity-70 font-mono">
-                      {color.cssVar}
-                    </div>
-                    <div className="text-xs text-foreground opacity-70 font-mono">
-                      {color.tailwindClass}
-                    </div>
+                {/* Color Info */}
+                <div className="space-y-2">
+                  <div className="text-sm font-medium text-foreground">
+                    {color.name}
+                  </div>
+                  <div className="text-xs text-foreground opacity-70 font-mono">
+                    {color.cssVar}
+                  </div>
+                  <div className="text-xs text-foreground opacity-70 font-mono">
+                    {color.tailwindClass}
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </DemoExampleClean>
+      ))}
 
-      {/* Modus Web Component Colors Reference */}
-      <div className="bg-card rounded-lg mt-16 p-8 border-default">
-        <div className="text-2xl font-semibold mb-4 text-foreground">
-          Modus Web Component Colors
-        </div>
-        <div className="text-base mb-6 text-foreground opacity-80">
-          These are the original Modus Web Component colors that our design
-          system maps to:
-        </div>
-
+      <DemoExampleClean
+        title="Modus Web Component Colors"
+        description="These are the original Modus Web Component colors that our design system maps to."
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             {
@@ -328,32 +306,29 @@ export default function ColorPalettePage() {
             </div>
           ))}
         </div>
-      </div>
+      </DemoExampleClean>
 
-      {/* Usage Instructions */}
-      <div className="bg-card rounded-lg mt-12 p-8 border-default">
-        <div className="text-2xl font-semibold mb-4 text-foreground">
-          How to Use These Colors
-        </div>
+      <DemoExample
+        title="How to Use These Colors"
+        description="Guidelines for using colors in your applications."
+      >
         <div className="space-y-4 text-foreground">
           <div>
-            <div className="font-medium mb-2">✅ For Custom UI Elements:</div>
+            <div className="font-medium mb-2">For Custom UI Elements:</div>
             <div className="bg-background rounded-md text-sm font-mono p-2 border-default">
               &lt;div className=&quot;bg-primary
               text-primary-foreground&quot;&gt;Content&lt;/div&gt;
             </div>
           </div>
           <div>
-            <div className="font-medium mb-2">✅ For Modus Web Components:</div>
+            <div className="font-medium mb-2">For Modus Web Components:</div>
             <div className="bg-background rounded-md text-sm font-mono p-2 border-default">
               &lt;modus-wc-button
               color=&quot;primary&quot;&gt;Button&lt;/modus-wc-button&gt;
             </div>
           </div>
           <div>
-            <div className="font-medium mb-2">
-              ❌ Don&apos;t mix the systems:
-            </div>
+            <div className="font-medium mb-2">Don&apos;t mix the systems:</div>
             <div className="bg-background rounded-md text-sm font-mono p-2 opacity-70 border-default">
               &lt;div className=&quot;bg-secondary&quot;&gt;Custom
               UI&lt;/div&gt; + &lt;modus-wc-button
@@ -364,7 +339,7 @@ export default function ColorPalettePage() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </DemoExample>
+    </DemoPage>
   );
 }

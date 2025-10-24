@@ -16,6 +16,7 @@ export interface ModusCheckboxProps {
   onInputChange?: (event: CustomEvent<InputEvent>) => void;
   onInputFocus?: (event: CustomEvent<FocusEvent>) => void;
   onInputBlur?: (event: CustomEvent<FocusEvent>) => void;
+  onValueChange?: (event: CustomEvent<boolean>) => void;
 }
 
 export default function ModusCheckbox({
@@ -33,6 +34,7 @@ export default function ModusCheckbox({
   onInputChange,
   onInputFocus,
   onInputBlur,
+  onValueChange,
 }: ModusCheckboxProps) {
   const checkboxRef = useRef<HTMLModusWcCheckboxElement>(null);
 
@@ -49,11 +51,29 @@ export default function ModusCheckbox({
     const handleInputBlur = (event: Event) => {
       onInputBlur?.(event as CustomEvent<FocusEvent>);
     };
+    const handleValueChange = (event: Event) => {
+      const customEvent = event as CustomEvent<InputEvent>;
+      // 🚨 CRITICAL: Handle the value inversion bug
+      // The value inversion bug is in the target.value, not the event detail
+      const rawValue = (customEvent.target as HTMLModusWcCheckboxElement).value;
+      const actualValue = !rawValue; // ✅ CORRECT: Invert the value
+
+      // Create a new event with the corrected value
+      const correctedEvent = new CustomEvent("valueChange", {
+        detail: actualValue,
+        bubbles: true,
+        cancelable: true,
+      });
+
+      onValueChange?.(correctedEvent);
+    };
 
     if (onInputChange)
       checkbox.addEventListener("inputChange", handleInputChange);
     if (onInputFocus) checkbox.addEventListener("inputFocus", handleInputFocus);
     if (onInputBlur) checkbox.addEventListener("inputBlur", handleInputBlur);
+    if (onValueChange)
+      checkbox.addEventListener("inputChange", handleValueChange);
 
     return () => {
       if (onInputChange)
@@ -62,8 +82,10 @@ export default function ModusCheckbox({
         checkbox.removeEventListener("inputFocus", handleInputFocus);
       if (onInputBlur)
         checkbox.removeEventListener("inputBlur", handleInputBlur);
+      if (onValueChange)
+        checkbox.removeEventListener("inputChange", handleValueChange);
     };
-  }, [onInputChange, onInputFocus, onInputBlur]);
+  }, [onInputChange, onInputFocus, onInputBlur, onValueChange]);
 
   return (
     <ModusWcCheckbox

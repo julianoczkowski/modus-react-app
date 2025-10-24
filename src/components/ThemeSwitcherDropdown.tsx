@@ -1,10 +1,8 @@
 import { useTheme } from "../hooks/useTheme";
 import { type Theme } from "../contexts/ThemeContextData";
-import { useState, useEffect, useRef } from "react";
-import {
-  ModusWcDropdownMenu,
-  ModusWcMenuItem,
-} from "@trimble-oss/moduswebcomponents-react";
+import { useState, useEffect } from "react";
+import ModusDropdownMenu from "./ModusDropdownMenu";
+import type { MenuItem } from "./ModusMenu";
 
 interface ThemeSwitcherDropdownProps {
   className?: string;
@@ -14,28 +12,13 @@ function ThemeSwitcherDropdownContent({
   className = "",
 }: ThemeSwitcherDropdownProps) {
   const { theme, setTheme } = useTheme();
-  const dropdownRef = useRef<HTMLModusWcDropdownMenuElement>(null);
 
-  // Add event listeners directly to the dropdown element
-  useEffect(() => {
-    const dropdown = dropdownRef.current;
-    if (dropdown) {
-      const handleItemSelect = (event: Event) => {
-        const customEvent = event as CustomEvent;
-        const selectedValue = customEvent.detail?.value as Theme;
-        if (selectedValue && selectedValue !== theme) {
-          setTheme(selectedValue);
-          dropdown.menuVisible = false;
-        }
-      };
-
-      dropdown.addEventListener("itemSelect", handleItemSelect);
-
-      return () => {
-        dropdown.removeEventListener("itemSelect", handleItemSelect);
-      };
+  const handleItemSelect = (event: CustomEvent<{ value: string }>) => {
+    const selectedValue = event.detail.value as Theme;
+    if (selectedValue && selectedValue !== theme) {
+      setTheme(selectedValue);
     }
-  }, [theme, setTheme]);
+  };
 
   const themes: { value: Theme; label: string; description: string }[] = [
     {
@@ -75,33 +58,28 @@ function ThemeSwitcherDropdownContent({
     return currentTheme ? currentTheme.label : "Theme";
   };
 
+  const menuItems: MenuItem[] = themes.map((themeOption) => ({
+    label: themeOption.label,
+    value: themeOption.value,
+    selected: theme === themeOption.value,
+  }));
+
   return (
     <div className={className}>
-      <ModusWcDropdownMenu
-        ref={dropdownRef}
+      <ModusDropdownMenu
         buttonVariant="filled"
         menuPlacement="bottom-end"
-      >
-        <div
-          slot="button"
-          className="flex items-center justify-between w-full min-w-[140px] px-3 py-2 gap-2"
-        >
-          <div className="flex-1 text-left text-md font-medium">
-            {getCurrentThemeLabel()}
+        menuItems={menuItems}
+        onItemSelect={handleItemSelect}
+        buttonContent={
+          <div className="flex items-center justify-between w-full min-w-[140px] px-3 py-2 gap-2">
+            <div className="flex-1 text-left text-md font-medium">
+              {getCurrentThemeLabel()}
+            </div>
+            <i className="modus-icons text-base flex-shrink-0">expand_more</i>
           </div>
-          <i className="modus-icons text-base flex-shrink-0">expand_more</i>
-        </div>
-        <div slot="menu">
-          {themes.map((themeOption) => (
-            <ModusWcMenuItem
-              key={themeOption.value}
-              label={themeOption.label}
-              value={themeOption.value}
-              selected={theme === themeOption.value}
-            />
-          ))}
-        </div>
-      </ModusWcDropdownMenu>
+        }
+      />
     </div>
   );
 }
