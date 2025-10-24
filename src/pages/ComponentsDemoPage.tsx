@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ModusButton from "./ModusButton";
+import ModusButton from "../components/ModusButton";
 
 interface ComponentDemo {
   name: string;

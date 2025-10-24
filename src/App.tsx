@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ModusProvider from "./components/ModusProvider";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import ComponentsDemo from "./components/ComponentsDemo";
+import ComponentsDemo from "./pages/ComponentsDemoPage";
 import AppHeader from "./components/AppHeader";
 import AppFooter from "./components/AppFooter";
-import ColorPalettePage from "./components/ColorPalettePage";
+import ColorPalettePage from "./pages/ColorPalettePage";
 import { demoRoutes } from "./config/routes";
 
 // Lazy load main demo pages
