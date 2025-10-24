@@ -3,7 +3,7 @@
 import { useState } from "react";
 import DemoExample from "../../components/DemoExample";
 import DemoPage from "../../components/DemoPage";
-import ModusTable, { TableColumn } from "../../components/ModusTable";
+import ModusTable, { type TableColumn } from "../../components/ModusTable";
 
 // Basic team data
 const teamColumns = [

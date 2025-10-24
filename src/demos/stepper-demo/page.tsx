@@ -2,7 +2,9 @@
 
 import DemoExample from "../../components/DemoExample";
 import DemoPage from "../../components/DemoPage";
-import ModusStepper, { ModusStepperItem } from "../../components/ModusStepper";
+import ModusStepper, {
+  type ModusStepperItem,
+} from "../../components/ModusStepper";
 
 const onboardingSteps: ModusStepperItem[] = [
   {

@@ -4,7 +4,7 @@ import { useState } from "react";
 import DemoExample from "../../components/DemoExample";
 import DemoPage from "../../components/DemoPage";
 import ModusDropdownMenu from "../../components/ModusDropdownMenu";
-import { MenuItem } from "../../components/ModusMenu";
+import type { MenuItem } from "../../components/ModusMenu";
 
 // Interactive Actions Dropdown Component
 function ActionsDropdown() {

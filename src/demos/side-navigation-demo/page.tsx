@@ -4,7 +4,7 @@ import { useState } from "react";
 import DemoExample from "../../components/DemoExample";
 import DemoPage from "../../components/DemoPage";
 import ModusSideNavigation, {
-  ModusSideNavigationItem,
+  type ModusSideNavigationItem,
 } from "../../components/ModusSideNavigation";
 import ModusButton from "../../components/ModusButton";
 
