@@ -1,0 +1,104 @@
+@import url("https://cdn.jsdelivr.net/npm/@trimble-oss/modus-icons@1.17.0/dist/field-systems/fonts/modus-icons.css");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+
+  /* Map Figma colors to Modus 9-color system */
+  --background: var(--modus-wc-color-base-page);
+  --foreground: var(--modus-wc-color-base-content);
+  --card: var(--modus-wc-color-base-100);
+  --card-foreground: var(--modus-wc-color-base-content);
+  --popover: var(--modus-wc-color-base-page);
+  --popover-foreground: var(--modus-wc-color-base-content);
+  --primary: var(--modus-wc-color-info);
+  --primary-foreground: var(--modus-wc-color-base-page);
+  --secondary: var(--modus-wc-color-base-300);
+  --secondary-foreground: var(--modus-wc-color-base-content);
+  --muted: var(--modus-wc-color-base-200);
+  --muted-foreground: var(--modus-wc-color-base-content);
+  --accent: var(--modus-wc-color-info);
+  --accent-foreground: var(--modus-wc-color-base-page);
+  --destructive: var(--destructive);
+  --destructive-foreground: var(--modus-wc-color-base-page);
+  --warning: var(--modus-wc-color-warning);
+  --warning-foreground: var(--modus-wc-color-base-content);
+  --success: var(--modus-wc-color-success);
+  --success-foreground: var(--modus-wc-color-base-page);
+  --border: var(--modus-wc-color-base-200);
+  --input: var(--modus-wc-color-base-page);
+  --input-background: var(--modus-wc-color-base-page);
+  --ring: var(--modus-wc-color-info);
+  --elevation-sm: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+  --chart-1: var(--modus-wc-color-info);
+  --chart-2: var(--modus-wc-color-warning);
+  --chart-3: var(--modus-wc-color-success);
+  --chart-4: var(--modus-wc-color-error);
+  --chart-5: var(--modus-wc-color-info);
+  --radius: 8px;
+  --radius-card: 16px;
+  --radius-badge: 4px;
+  --sidebar: var(--modus-wc-color-base-page);
+  --sidebar-foreground: var(--modus-wc-color-base-content);
+  --sidebar-primary: var(--modus-wc-color-info);
+  --sidebar-primary-foreground: var(--modus-wc-color-base-page);
+  --sidebar-accent: var(--modus-wc-color-info);
+  --sidebar-accent-foreground: var(--modus-wc-color-base-page);
+  --sidebar-border: var(--modus-wc-color-base-200);
+  --sidebar-ring: var(--modus-wc-color-info);
+}
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+  }
+
+  html {
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+  }
+}
+
+/* Smart Border Utilities - Tailwind v4 Compatible */
+.border-default {
+  border: 1px solid var(--border);
+}
+
+.border-thick {
+  border: 2px solid var(--border);
+}
+
+.border-dashed {
+  border: 1px dashed var(--border);
+}
+
+.border-thick-dashed {
+  border: 2px dashed var(--border);
+}
+
+.border-bottom-default {
+  border-bottom: 1px solid var(--border);
+}
+
+.border-top-default {
+  border-top: 1px solid var(--border);
+}
+
+.border-left-default {
+  border-left: 1px solid var(--border);
+}
+
+.border-right-default {
+  border-right: 1px solid var(--border);
+}
