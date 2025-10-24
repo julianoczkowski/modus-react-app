@@ -19,10 +19,7 @@ export default function IconDemoPage() {
         <div className="flex gap-4">
           {navigationIcons.map((icon) => (
             <div key={icon} className="flex flex-col items-center gap-2">
-              <div
-                className="flex items-center justify-center rounded-full bg-card p-3"
-                style={{ border: "1px solid var(--border)" }}
-              >
+              <div className="flex items-center justify-center rounded-full bg-card p-3 border-default">
                 <ModusIcon name={icon} size="lg" decorative={false} />
               </div>
               <div className="text-sm text-foreground">{icon}</div>

@@ -15,7 +15,7 @@ function App() {
         <Router>
           <div className="min-h-screen flex flex-col">
             <AppHeader />
-            <main className="flex-1">
+            <div className="flex-1">
               <Suspense
                 fallback={
                   <div className="flex items-center justify-center min-h-screen">
@@ -33,7 +33,7 @@ function App() {
                   <Route path="/color-palette" element={<ColorPalettePage />} />
                 </Routes>
               </Suspense>
-            </main>
+            </div>
             <AppFooter />
           </div>
         </Router>

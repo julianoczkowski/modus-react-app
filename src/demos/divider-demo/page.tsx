@@ -33,10 +33,7 @@ export default function DividerDemoPage() {
         title="Compact layout"
         description="Vertical dividers help separate quick stats in a row."
       >
-        <div
-          className="flex items-center gap-4 rounded-lg bg-card p-4"
-          style={{ border: "1px solid var(--border)" }}
-        >
+        <div className="flex items-center gap-4 rounded-lg bg-card p-4 border-default">
           <div className="flex flex-col">
             <div className="text-sm text-foreground opacity-80">Revenue</div>
             <div className="text-lg font-semibold text-foreground">$420k</div>

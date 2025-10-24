@@ -215,8 +215,7 @@ export default function ColorPalettePage() {
               {group.colors.map((color, colorIndex) => (
                 <div
                   key={colorIndex}
-                  className="bg-card rounded-lg p-6 color-card"
-                  style={{ border: "2px dashed var(--border)" }}
+                  className="bg-card rounded-lg p-6 color-card border-thick-dashed"
                 >
                   {/* Color Swatch */}
                   <div
@@ -282,10 +281,7 @@ export default function ColorPalettePage() {
       </div>
 
       {/* Modus Web Component Colors Reference */}
-      <div
-        className="bg-card rounded-lg mt-16 p-8"
-        style={{ border: "1px solid var(--border)" }}
-      >
+      <div className="bg-card rounded-lg mt-16 p-8 border-default">
         <div className="text-2xl font-semibold mb-4 text-foreground">
           Modus Web Component Colors
         </div>
@@ -318,11 +314,7 @@ export default function ColorPalettePage() {
             { name: "modus-wc-color-warning", description: "Warning" },
             { name: "modus-wc-color-error", description: "Error/danger" },
           ].map((color, index) => (
-            <div
-              key={index}
-              className="bg-card rounded-lg p-4"
-              style={{ border: "1px solid var(--border)" }}
-            >
+            <div key={index} className="bg-card rounded-lg p-4 border-default">
               <div
                 className="w-full h-16 rounded mb-3"
                 style={{ backgroundColor: `var(--${color.name})` }}
@@ -339,30 +331,21 @@ export default function ColorPalettePage() {
       </div>
 
       {/* Usage Instructions */}
-      <div
-        className="bg-card rounded-lg mt-12 p-8"
-        style={{ border: "1px solid var(--border)" }}
-      >
+      <div className="bg-card rounded-lg mt-12 p-8 border-default">
         <div className="text-2xl font-semibold mb-4 text-foreground">
           How to Use These Colors
         </div>
         <div className="space-y-4 text-foreground">
           <div>
             <div className="font-medium mb-2">✅ For Custom UI Elements:</div>
-            <div
-              className="bg-background rounded-md text-sm font-mono p-2"
-              style={{ border: "1px solid var(--border)" }}
-            >
+            <div className="bg-background rounded-md text-sm font-mono p-2 border-default">
               &lt;div className=&quot;bg-primary
               text-primary-foreground&quot;&gt;Content&lt;/div&gt;
             </div>
           </div>
           <div>
             <div className="font-medium mb-2">✅ For Modus Web Components:</div>
-            <div
-              className="bg-background rounded-md text-sm font-mono p-2"
-              style={{ border: "1px solid var(--border)" }}
-            >
+            <div className="bg-background rounded-md text-sm font-mono p-2 border-default">
               &lt;modus-wc-button
               color=&quot;primary&quot;&gt;Button&lt;/modus-wc-button&gt;
             </div>
@@ -371,10 +354,7 @@ export default function ColorPalettePage() {
             <div className="font-medium mb-2">
               ❌ Don&apos;t mix the systems:
             </div>
-            <div
-              className="bg-background rounded-md text-sm font-mono p-2 opacity-70"
-              style={{ border: "1px solid var(--border)" }}
-            >
+            <div className="bg-background rounded-md text-sm font-mono p-2 opacity-70 border-default">
               &lt;div className=&quot;bg-secondary&quot;&gt;Custom
               UI&lt;/div&gt; + &lt;modus-wc-button
               color=&quot;secondary&quot;&gt;Button&lt;/modus-wc-button&gt;

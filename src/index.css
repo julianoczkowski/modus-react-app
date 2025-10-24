@@ -103,6 +103,120 @@
   border-right: 1px solid var(--border);
 }
 
+/* Thick Border Utilities with Design System Colors */
+.border-thick-success {
+  border: 2px solid var(--modus-wc-color-success);
+}
+
+.border-thick-warning {
+  border: 2px solid var(--modus-wc-color-warning);
+}
+
+.border-thick-destructive {
+  border: 2px solid var(--modus-wc-color-error);
+}
+
+.border-thick-primary {
+  border: 2px solid var(--modus-wc-color-info);
+}
+
+.border-thick-border {
+  border: 2px solid var(--border);
+}
+
+/* Context-Specific Border Utilities */
+/* Success borders */
+.border-success {
+  border: 1px solid var(--modus-wc-color-success);
+}
+.border-thick-success {
+  border: 2px solid var(--modus-wc-color-success);
+}
+.border-dashed-success {
+  border: 1px dashed var(--modus-wc-color-success);
+}
+.border-top-success {
+  border-top: 1px solid var(--modus-wc-color-success);
+}
+.border-bottom-success {
+  border-bottom: 1px solid var(--modus-wc-color-success);
+}
+.border-left-success {
+  border-left: 1px solid var(--modus-wc-color-success);
+}
+.border-right-success {
+  border-right: 1px solid var(--modus-wc-color-success);
+}
+
+/* Warning borders */
+.border-warning {
+  border: 1px solid var(--modus-wc-color-warning);
+}
+.border-thick-warning {
+  border: 2px solid var(--modus-wc-color-warning);
+}
+.border-dashed-warning {
+  border: 1px dashed var(--modus-wc-color-warning);
+}
+.border-top-warning {
+  border-top: 1px solid var(--modus-wc-color-warning);
+}
+.border-bottom-warning {
+  border-bottom: 1px solid var(--modus-wc-color-warning);
+}
+.border-left-warning {
+  border-left: 1px solid var(--modus-wc-color-warning);
+}
+.border-right-warning {
+  border-right: 1px solid var(--modus-wc-color-warning);
+}
+
+/* Error/Destructive borders */
+.border-destructive {
+  border: 1px solid var(--modus-wc-color-error);
+}
+.border-thick-destructive {
+  border: 2px solid var(--modus-wc-color-error);
+}
+.border-dashed-destructive {
+  border: 1px dashed var(--modus-wc-color-error);
+}
+.border-top-destructive {
+  border-top: 1px solid var(--modus-wc-color-error);
+}
+.border-bottom-destructive {
+  border-bottom: 1px solid var(--modus-wc-color-error);
+}
+.border-left-destructive {
+  border-left: 1px solid var(--modus-wc-color-error);
+}
+.border-right-destructive {
+  border-right: 1px solid var(--modus-wc-color-error);
+}
+
+/* Primary/Info borders */
+.border-primary {
+  border: 1px solid var(--modus-wc-color-info);
+}
+.border-thick-primary {
+  border: 2px solid var(--modus-wc-color-info);
+}
+.border-dashed-primary {
+  border: 1px dashed var(--modus-wc-color-info);
+}
+.border-top-primary {
+  border-top: 1px solid var(--modus-wc-color-info);
+}
+.border-bottom-primary {
+  border-bottom: 1px solid var(--modus-wc-color-info);
+}
+.border-left-primary {
+  border-left: 1px solid var(--modus-wc-color-info);
+}
+.border-right-primary {
+  border-right: 1px solid var(--modus-wc-color-info);
+}
+
 /* Theme-specific icon visibility */
 .github-icon-light {
   display: block;

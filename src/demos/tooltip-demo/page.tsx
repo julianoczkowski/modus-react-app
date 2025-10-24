@@ -38,10 +38,7 @@ export default function TooltipDemoPage() {
         title="Tooltip positions"
         description="Tooltips can be positioned in different directions around the target element."
       >
-        <div
-          className="flex flex-wrap items-center gap-8 p-8 bg-card rounded-lg"
-          style={{ border: "1px solid var(--border)" }}
-        >
+        <div className="flex flex-wrap items-center gap-8 p-8 bg-card rounded-lg border-default">
           <ModusTooltip content="Tooltip on top" position="top">
             <ModusButton color="primary">Top</ModusButton>
           </ModusTooltip>
@@ -71,10 +68,7 @@ export default function TooltipDemoPage() {
         title="Icon tooltips with positions"
         description="Different tooltip positions work well with icons to provide contextual help."
       >
-        <div
-          className="flex flex-wrap items-center gap-6 p-6 bg-card rounded-lg"
-          style={{ border: "1px solid var(--border)" }}
-        >
+        <div className="flex flex-wrap items-center gap-6 p-6 bg-card rounded-lg border-default">
           <ModusTooltip content="This icon shows information" position="top">
             <i className="modus-icons text-2xl text-primary">info</i>
           </ModusTooltip>
@@ -100,10 +94,7 @@ export default function TooltipDemoPage() {
         title="Text with tooltips"
         description="Tooltips can provide additional context for text elements. Hover over the underlined text to see different positions."
       >
-        <div
-          className="space-y-6 p-6 bg-card rounded-lg"
-          style={{ border: "1px solid var(--border)" }}
-        >
+        <div className="space-y-6 p-6 bg-card rounded-lg border-default">
           <div className="flex items-center justify-center gap-8">
             <ModusTooltip
               content="This tooltip appears above the text"

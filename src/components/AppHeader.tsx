@@ -13,12 +13,12 @@ export default function AppHeader() {
     <div className="w-full border-bottom-default">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-4 gap-4 md:gap-0">
         <div className="flex-shrink-0">
-          <button
+          <div
             onClick={() => handleNavigation("/")}
             className="text-xl md:text-2xl font-semibold m-0 text-foreground hover:opacity-80 transition-opacity cursor-pointer"
           >
             Modus 2.0 React App
-          </button>
+          </div>
         </div>
         <div className="flex gap-2 md:gap-4 order-2 md:order-1">
           <ModusWcButton
