@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ModusProvider from "./components/ModusProvider";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import ComponentsDemo from "./pages/ComponentsDemoPage";
+import ComponentsDemo from "./pages/ComponentsGalleryPage";
 import AppHeader from "./components/AppHeader";
 import AppFooter from "./components/AppFooter";
 import ColorPalettePage from "./pages/ColorPalettePage";

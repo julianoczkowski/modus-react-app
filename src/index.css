@@ -102,3 +102,20 @@
 .border-right-default {
   border-right: 1px solid var(--border);
 }
+
+/* Theme-specific icon visibility */
+.github-icon-light {
+  display: block;
+}
+
+.github-icon-dark {
+  display: none;
+}
+
+.dark .github-icon-light {
+  display: none;
+}
+
+.dark .github-icon-dark {
+  display: block;
+}

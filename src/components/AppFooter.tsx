@@ -1,21 +1,25 @@
+import ReactSvg from "../assets/react.svg";
+import GithubMarkSvg from "../assets/github-mark.svg";
+import GithubMarkWhiteSvg from "../assets/github-mark-white.svg";
+
 export default function AppFooter() {
   return (
     <footer className="text-center py-4 border-top-default bg-card text-foreground">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center flex-wrap gap-4 px-4">
         <div className="flex items-center gap-3">
           <img
-            src="/nextjs-icon.svg"
-            alt="Next.js Logo"
+            src={ReactSvg}
+            alt="React Logo"
             width={24}
             height={24}
-            className="drop-shadow-sm nextjs-logo-light"
+            className="drop-shadow-sm react-logo-light"
           />
           <img
-            src="/nextjs-icon.svg"
-            alt="Next.js Logo"
+            src={ReactSvg}
+            alt="React Logo"
             width={24}
             height={24}
-            className="drop-shadow-sm nextjs-logo-dark hidden"
+            className="drop-shadow-sm react-logo-dark hidden"
           />
           <div className="text-sm text-foreground">
             &copy; 2025 Modus 2.0 React App - Built with React + Vite
@@ -29,18 +33,18 @@ export default function AppFooter() {
             className="text-sm flex items-center transition-colors duration-200 no-underline text-foreground hover:opacity-80"
           >
             <img
-              src="/github-mark.svg"
+              src={GithubMarkSvg}
               alt="GitHub"
               width={20}
               height={20}
               className="mr-1.5 github-icon-light"
             />
             <img
-              src="/github-mark-white.svg"
+              src={GithubMarkWhiteSvg}
               alt="GitHub"
               width={20}
               height={20}
-              className="mr-1.5 github-icon-dark hidden"
+              className="mr-1.5 github-icon-dark"
             />
             GitHub
           </a>
