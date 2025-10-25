@@ -1,6 +1,6 @@
 ---
 description: Semantic HTML usage guidelines for React + Vite
-alwaysApply: true
+alwaysApply: false
 ---
 
 # Semantic HTML Usage in React + Vite
