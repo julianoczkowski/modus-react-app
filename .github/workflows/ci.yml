@@ -36,6 +36,8 @@ jobs:
           npm run lint:semantic
           npm run lint:styles
           npm run lint:borders
+          npm run lint:opacity
+          npm run lint:icon-names
 
       - name: Build application
         run: npm run build
