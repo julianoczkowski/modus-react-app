@@ -1,5 +1,5 @@
 name: 🐛 Bug Report
-description: Report a bug or unexpected behavior in the Modus Vue Boilerplate
+description: Report a bug or unexpected behavior in the Modus React App
 title: "[BUG] "
 labels: ["bug", "needs-triage"]
 assignees: ["julianoczkowski"]
@@ -18,9 +18,13 @@ body:
       options:
         - label: I have searched existing issues to avoid duplicates
           required: true
-        - label: I have tested this with the latest version of the boilerplate
+        - label: I have tested this with the latest version of the React app
           required: true
         - label: I have run `npm run lint:colors` to check for color violations
+          required: false
+        - label: I have run `npm run lint:styles` to check for inline style violations
+          required: false
+        - label: I have run `npm run lint:semantic` to check for semantic HTML violations
           required: false
 
   - type: textarea
@@ -130,10 +134,12 @@ body:
       label: Modus Theme
       description: Which Modus theme were you using when the bug occurred?
       options:
-        - Classic Light (default)
+        - Classic Light
         - Classic Dark
         - Modern Light
         - Modern Dark
+        - Connect Light
+        - Connect Dark
         - Not applicable
     validations:
       required: false
@@ -160,9 +166,11 @@ body:
       description: Is this bug related to specific components?
       options:
         - label: Modus Web Components (buttons, alerts, etc.)
-        - label: Vue Components (ModusIcon, custom components)
+        - label: React Components (ModusIcon, custom components)
         - label: Theme switching functionality
         - label: Icon system
         - label: Color system
-        - label: Build/deployment process
+        - label: Vite build process
         - label: Development tools (linting, MCP servers)
+        - label: TypeScript integration
+        - label: Tailwind CSS integration

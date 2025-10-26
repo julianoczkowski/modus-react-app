@@ -8,6 +8,7 @@ alwaysApply: false
 ## 🎨 **Icon System Overview**
 
 **CRITICAL**: This React + Vite application uses **Modus Icons** exclusively. All icons must use the Modus icon system with proper CDN imports and valid icon names.
+**REFERANCE**: For allowed list of Modus icon names see `.cursor/rules/modus-icon-names.mdc`
 
 **Icon System**: Modus Icons v1.18.0 with CDN import in `src/index.css`
 

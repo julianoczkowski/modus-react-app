@@ -116,7 +116,7 @@ async function checkFile(filePath) {
       const line = content.substring(0, match.index).split("\n").length;
       const column = match.index - content.lastIndexOf("\n", match.index - 1);
 
-      // Skip if it's a legitimate Modus pattern
+      // Skip if it's a legitimate Modus pattern or legitimate component/import
       const matchText = match[0];
       if (
         matchText.includes("ModusIcon") ||
@@ -125,7 +125,30 @@ async function checkFile(filePath) {
         (matchText.includes("icon-light") && content.includes("modus-icons")) ||
         (matchText.includes("icon-dark") && content.includes("modus-icons")) ||
         (matchText.includes("icon-alert") && content.includes("modus-icons")) ||
-        (matchText.includes("icon-demo") && content.includes("modus-icons"))
+        (matchText.includes("icon-demo") && content.includes("modus-icons")) ||
+        // Skip legitimate component names and imports
+        matchText.includes("IconsPage") ||
+        matchText.includes("modusIcons") ||
+        matchText.includes("totalIconCount") ||
+        matchText.includes("categoryCount") ||
+        // Skip legitimate import patterns
+        (matchText.includes("import") &&
+          (matchText.includes("IconsPage") ||
+            matchText.includes("modusIcons") ||
+            matchText.includes("totalIconCount") ||
+            matchText.includes("categoryCount") ||
+            (matchText.includes("from") &&
+              (matchText.includes("./pages/IconsPage") ||
+                matchText.includes("../pages/IconsPage") ||
+                matchText.includes("./data/modusIcons") ||
+                matchText.includes("../data/modusIcons"))))) ||
+        // Skip legitimate JSX component usage
+        (matchText.includes("<") &&
+          matchText.includes(">") &&
+          (matchText.includes("IconsPage") ||
+            matchText.includes("modusIcons") ||
+            matchText.includes("totalIconCount") ||
+            matchText.includes("categoryCount")))
       ) {
         continue;
       }

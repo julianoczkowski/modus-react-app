@@ -6,7 +6,7 @@
 README.md @julianoczkowski
 
 # Application code
-app/ @julianoczkowski
+src/ @julianoczkowski
 types/ @julianoczkowski
 
 # Tooling and configuration
@@ -14,9 +14,12 @@ types/ @julianoczkowski
 scripts/ @julianoczkowski
 package.json @julianoczkowski
 tsconfig.json @julianoczkowski
-next.config.ts @julianoczkowski
-postcss.config.mjs @julianoczkowski
-eslint.config.mjs @julianoczkowski
+tsconfig.app.json @julianoczkowski
+tsconfig.node.json @julianoczkowski
+vite.config.ts @julianoczkowski
+postcss.config.js @julianoczkowski
+eslint.config.js @julianoczkowski
+tailwind.config.js @julianoczkowski
 
 # Custom rules
 .cursor/rules/ @julianoczkowski

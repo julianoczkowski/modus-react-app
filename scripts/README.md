@@ -199,6 +199,114 @@ All scripts run automatically before each commit via pre-commit hooks to ensure 
 git commit -m "your changes"
 ```
 
+### 7. Opacity Utilities (`check-opacity-utilities.js`)
+
+**Purpose**: Validates opacity usage with design system colors to ensure custom opacity utilities are used instead of Tailwind's `/80` syntax.
+
+**What it checks:**
+
+- Tailwind opacity syntax with design system colors (e.g., `text-foreground/80`)
+- Suggests custom opacity utilities (e.g., `text-foreground-80`)
+- Validates all opacity levels: 20, 40, 60, 80
+- Checks text, background, and border opacity usage
+
+**Usage:**
+
+```bash
+npm run lint:opacity
+```
+
+**Success Output:**
+
+```
+🔍 Checking for Tailwind opacity syntax violations...
+
+✅ No Tailwind opacity syntax violations found!
+All design system colors are using custom opacity utilities.
+```
+
+**Error Output:**
+
+```
+❌ Found 3 Tailwind opacity syntax violations:
+
+📁 src/pages/HomePage.tsx
+  src/pages/HomePage.tsx:43:38
+  Found Tailwind opacity syntax: text-foreground/80
+  Use custom opacity utility: text-foreground-80
+  Tailwind /80 syntax doesn't work with CSS variables. Use our custom opacity utilities instead.
+
+📁 src/components/Card.tsx
+  src/components/Card.tsx:15:23
+  Found Tailwind opacity syntax: bg-primary/60
+  Use custom opacity utility: bg-primary-60
+  Tailwind /60 syntax doesn't work with CSS variables. Use our custom opacity utilities instead.
+```
+
+**Key Features:**
+
+- Detects Tailwind opacity syntax with design system colors
+- Provides specific suggestions for each violation
+- Supports all design system color combinations
+- Explains why the syntax doesn't work
+- Integrates with existing lint suite
+
+### 8. Icon Names Validation (`check-icon-names.js`)
+
+**Purpose**: Validates that all Modus icon names used in the codebase are correct and exist in the official Modus Icons list.
+
+**What it checks:**
+
+- ModusIcon component usage with invalid icon names
+- Direct icon class usage with invalid names
+- Icon names in string literals and template literals
+- Provides suggestions for similar/partial matches
+- Validates against complete official icon list (710+ icons)
+
+**Usage:**
+
+```bash
+npm run lint:icon-names
+```
+
+**Success Output:**
+
+```
+🔍 Validating Modus icon names...
+
+✅ All Modus icon names are valid!
+Found 710 valid Modus icons across 25 categories.
+```
+
+**Error Output:**
+
+```
+❌ Found 3 invalid Modus icon names:
+
+📁 src/components/MyComponent.tsx
+  src/components/MyComponent.tsx:15:19
+  Invalid Modus icon name: visibility
+  Similar icons: visibility_off, visibility_on, visibility_part_outline
+  The icon "visibility" is not found in the official Modus Icons list.
+
+📁 src/pages/Dashboard.tsx
+  src/pages/Dashboard.tsx:22:13
+  Invalid Modus icon name: more_vert
+  Similar icons: more_vertical
+  The icon "more_vert" is not found in the official Modus Icons list.
+```
+
+**Key Features:**
+
+- Validates against complete official Modus Icons list
+- Provides intelligent suggestions using Levenshtein distance
+- Supports multiple icon usage patterns
+- Shows icon categories and counts
+- Integrates with existing lint suite
+- Helps prevent typos and invalid icon names
+
+## Pre-commit Integration
+
 The pre-commit hooks will:
 
 1. ✅ Run TypeScript type checking for type safety
@@ -207,6 +315,8 @@ The pre-commit hooks will:
 4. ✅ Ensure only Modus Icons are used
 5. ✅ Confirm semantic HTML elements are replaced with div elements
 6. ✅ Detect border violations (Tailwind color classes in borders)
+7. ✅ Validate opacity utilities usage
+8. ✅ Validate Modus icon names are correct
 
 ## Modus Color System (9 Colors Only)
 

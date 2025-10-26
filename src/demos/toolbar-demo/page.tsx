@@ -18,7 +18,7 @@ export default function ToolbarDemoPage() {
         <ModusToolbar
           startContent={
             <div className="flex items-center gap-3 text-sm text-foreground">
-              <i className="modus-icons text-primary">description</i>
+              <i className="modus-icons text-primary">pencil</i>
               <div className="font-medium">Proposal draft</div>
             </div>
           }

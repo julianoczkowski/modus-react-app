@@ -51,6 +51,63 @@
   --sidebar-accent-foreground: var(--modus-wc-color-base-page);
   --sidebar-border: var(--modus-wc-color-base-200);
   --sidebar-ring: var(--modus-wc-color-info);
+
+  /* Opacity variants for design system colors */
+  --foreground-80: color-mix(in srgb, var(--foreground) 80%, transparent);
+  --foreground-60: color-mix(in srgb, var(--foreground) 60%, transparent);
+  --foreground-40: color-mix(in srgb, var(--foreground) 40%, transparent);
+  --foreground-20: color-mix(in srgb, var(--foreground) 20%, transparent);
+
+  --muted-foreground-80: color-mix(
+    in srgb,
+    var(--muted-foreground) 80%,
+    transparent
+  );
+  --muted-foreground-60: color-mix(
+    in srgb,
+    var(--muted-foreground) 60%,
+    transparent
+  );
+  --muted-foreground-40: color-mix(
+    in srgb,
+    var(--muted-foreground) 40%,
+    transparent
+  );
+  --muted-foreground-20: color-mix(
+    in srgb,
+    var(--muted-foreground) 20%,
+    transparent
+  );
+
+  --primary-80: color-mix(in srgb, var(--primary) 80%, transparent);
+  --primary-60: color-mix(in srgb, var(--primary) 60%, transparent);
+  --primary-40: color-mix(in srgb, var(--primary) 40%, transparent);
+  --primary-20: color-mix(in srgb, var(--primary) 20%, transparent);
+
+  --secondary-80: color-mix(in srgb, var(--secondary) 80%, transparent);
+  --secondary-60: color-mix(in srgb, var(--secondary) 60%, transparent);
+  --secondary-40: color-mix(in srgb, var(--secondary) 40%, transparent);
+  --secondary-20: color-mix(in srgb, var(--secondary) 20%, transparent);
+
+  --destructive-80: color-mix(in srgb, var(--destructive) 80%, transparent);
+  --destructive-60: color-mix(in srgb, var(--destructive) 60%, transparent);
+  --destructive-40: color-mix(in srgb, var(--destructive) 40%, transparent);
+  --destructive-20: color-mix(in srgb, var(--destructive) 20%, transparent);
+
+  --warning-80: color-mix(in srgb, var(--warning) 80%, transparent);
+  --warning-60: color-mix(in srgb, var(--warning) 60%, transparent);
+  --warning-40: color-mix(in srgb, var(--warning) 40%, transparent);
+  --warning-20: color-mix(in srgb, var(--warning) 20%, transparent);
+
+  --success-80: color-mix(in srgb, var(--success) 80%, transparent);
+  --success-60: color-mix(in srgb, var(--success) 60%, transparent);
+  --success-40: color-mix(in srgb, var(--success) 40%, transparent);
+  --success-20: color-mix(in srgb, var(--success) 20%, transparent);
+
+  --border-80: color-mix(in srgb, var(--border) 80%, transparent);
+  --border-60: color-mix(in srgb, var(--border) 60%, transparent);
+  --border-40: color-mix(in srgb, var(--border) 40%, transparent);
+  --border-20: color-mix(in srgb, var(--border) 20%, transparent);
 }
 
 @layer base {
@@ -232,4 +289,239 @@
 
 .dark .github-icon-dark {
   display: block;
+}
+
+/*Opacity utilities for design system colors */
+.text-foreground-80 {
+  color: var(--foreground-80);
+}
+.text-foreground-60 {
+  color: var(--foreground-60);
+}
+.text-foreground-40 {
+  color: var(--foreground-40);
+}
+.text-foreground-20 {
+  color: var(--foreground-20);
+}
+
+.text-muted-foreground-80 {
+  color: var(--muted-foreground-80);
+}
+.text-muted-foreground-60 {
+  color: var(--muted-foreground-60);
+}
+.text-muted-foreground-40 {
+  color: var(--muted-foreground-40);
+}
+.text-muted-foreground-20 {
+  color: var(--muted-foreground-20);
+}
+
+.text-primary-80 {
+  color: var(--primary-80);
+}
+.text-primary-60 {
+  color: var(--primary-60);
+}
+.text-primary-40 {
+  color: var(--primary-40);
+}
+.text-primary-20 {
+  color: var(--primary-20);
+}
+
+.text-secondary-80 {
+  color: var(--secondary-80);
+}
+.text-secondary-60 {
+  color: var(--secondary-60);
+}
+.text-secondary-40 {
+  color: var(--secondary-40);
+}
+.text-secondary-20 {
+  color: var(--secondary-20);
+}
+
+.text-destructive-80 {
+  color: var(--destructive-80);
+}
+.text-destructive-60 {
+  color: var(--destructive-60);
+}
+.text-destructive-40 {
+  color: var(--destructive-40);
+}
+.text-destructive-20 {
+  color: var(--destructive-20);
+}
+
+.text-warning-80 {
+  color: var(--warning-80);
+}
+.text-warning-60 {
+  color: var(--warning-60);
+}
+.text-warning-40 {
+  color: var(--warning-40);
+}
+.text-warning-20 {
+  color: var(--warning-20);
+}
+
+.text-success-80 {
+  color: var(--success-80);
+}
+.text-success-60 {
+  color: var(--success-60);
+}
+.text-success-40 {
+  color: var(--success-40);
+}
+.text-success-20 {
+  color: var(--success-20);
+}
+
+.bg-foreground-80 {
+  background-color: var(--foreground-80);
+}
+.bg-foreground-60 {
+  background-color: var(--foreground-60);
+}
+.bg-foreground-40 {
+  background-color: var(--foreground-40);
+}
+.bg-foreground-20 {
+  background-color: var(--foreground-20);
+}
+
+.bg-primary-80 {
+  background-color: var(--primary-80);
+}
+.bg-primary-60 {
+  background-color: var(--primary-60);
+}
+.bg-primary-40 {
+  background-color: var(--primary-40);
+}
+.bg-primary-20 {
+  background-color: var(--primary-20);
+}
+
+.bg-secondary-80 {
+  background-color: var(--secondary-80);
+}
+.bg-secondary-60 {
+  background-color: var(--secondary-60);
+}
+.bg-secondary-40 {
+  background-color: var(--secondary-40);
+}
+.bg-secondary-20 {
+  background-color: var(--secondary-20);
+}
+
+.bg-destructive-80 {
+  background-color: var(--destructive-80);
+}
+.bg-destructive-60 {
+  background-color: var(--destructive-60);
+}
+.bg-destructive-40 {
+  background-color: var(--destructive-40);
+}
+.bg-destructive-20 {
+  background-color: var(--destructive-20);
+}
+
+.bg-warning-80 {
+  background-color: var(--warning-80);
+}
+.bg-warning-60 {
+  background-color: var(--warning-60);
+}
+.bg-warning-40 {
+  background-color: var(--warning-40);
+}
+.bg-warning-20 {
+  background-color: var(--warning-20);
+}
+
+.bg-success-80 {
+  background-color: var(--success-80);
+}
+.bg-success-60 {
+  background-color: var(--success-60);
+}
+.bg-success-40 {
+  background-color: var(--success-40);
+}
+.bg-success-20 {
+  background-color: var(--success-20);
+}
+
+.border-foreground-80 {
+  border-color: var(--foreground-80);
+}
+.border-foreground-60 {
+  border-color: var(--foreground-60);
+}
+.border-foreground-40 {
+  border-color: var(--foreground-40);
+}
+.border-foreground-20 {
+  border-color: var(--foreground-20);
+}
+
+.border-primary-80 {
+  border-color: var(--primary-80);
+}
+.border-primary-60 {
+  border-color: var(--primary-60);
+}
+.border-primary-40 {
+  border-color: var(--primary-40);
+}
+.border-primary-20 {
+  border-color: var(--primary-20);
+}
+
+.border-destructive-80 {
+  border-color: var(--destructive-80);
+}
+.border-destructive-60 {
+  border-color: var(--destructive-60);
+}
+.border-destructive-40 {
+  border-color: var(--destructive-40);
+}
+.border-destructive-20 {
+  border-color: var(--destructive-20);
+}
+
+.border-warning-80 {
+  border-color: var(--warning-80);
+}
+.border-warning-60 {
+  border-color: var(--warning-60);
+}
+.border-warning-40 {
+  border-color: var(--warning-40);
+}
+.border-warning-20 {
+  border-color: var(--warning-20);
+}
+
+.border-success-80 {
+  border-color: var(--success-80);
+}
+.border-success-60 {
+  border-color: var(--success-60);
+}
+.border-success-40 {
+  border-color: var(--success-40);
+}
+.border-success-20 {
+  border-color: var(--success-20);
 }

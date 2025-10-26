@@ -35,8 +35,10 @@ body:
         - Color System
         - Icon System
         - Theme System
+        - Vite Configuration
         - Build/Deployment
         - TypeScript Integration
+        - Tailwind CSS Integration
         - MCP Servers
         - Development Rules
         - Performance
@@ -72,10 +74,15 @@ body:
       label: Code Example (if applicable)
       description: Share any relevant code that relates to your question
       placeholder: |
-        ```vue
-        <!-- Your code here -->
+        ```tsx
+        // Your code here
+        import { ModusButton } from './components/ModusButton';
+
+        function MyComponent() {
+          return <ModusButton variant="primary">Click me</ModusButton>;
+        }
         ```
-      render: vue
+      render: tsx
 
   - type: dropdown
     id: experience
@@ -83,15 +90,21 @@ body:
       label: Experience Level
       description: What's your experience level with the technologies involved?
       options:
-        - Beginner with Vue.js
-        - Intermediate with Vue.js
-        - Advanced with Vue.js
+        - Beginner with React
+        - Intermediate with React
+        - Advanced with React
+        - New to Vite
+        - Familiar with Vite
+        - Expert with Vite
         - New to Modus Design System
         - Familiar with Modus Design System
         - Expert with Modus Design System
         - New to TypeScript
         - Familiar with TypeScript
         - Expert with TypeScript
+        - New to Tailwind CSS
+        - Familiar with Tailwind CSS
+        - Expert with Tailwind CSS
     validations:
       required: false
 

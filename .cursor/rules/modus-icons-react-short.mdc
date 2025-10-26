@@ -5,6 +5,7 @@ alwaysApply: true
 # Modus Icons - Short
 
 Essential icon usage rules for Modus Design System.
+**REFERANCE**: For allowed list of Modus icon names see `.cursor/rules/modus-icon-names.mdc`
 
 ## Key Rules
 

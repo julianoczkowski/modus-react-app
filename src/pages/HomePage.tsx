@@ -40,7 +40,7 @@ export default function HomePage() {
             <div className="text-6xl font-bold text-foreground mb-6">
               Modus 2.0
             </div>
-            <div className="text-2xl text-foreground/80 mb-8 max-w-3xl mx-auto">
+            <div className="text-2xl text-foreground-80 mb-8 max-w-3xl mx-auto">
               The complete design system for building modern, accessible, and
               beautiful user interfaces with React and Vite.
             </div>
@@ -66,13 +66,13 @@ export default function HomePage() {
       </div>
 
       {/* Features Section */}
-      <div className="py-24 bg-card/50">
+      <div className="py-24 bg-card-50 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="text-4xl font-bold text-foreground mb-4">
               Why Choose Modus 2.0?
             </div>
-            <div className="text-xl text-foreground/80 max-w-2xl mx-auto">
+            <div className="text-xl text-foreground-80 mx-auto">
               Built for modern React applications with TypeScript, Vite, and
               Tailwind CSS.
             </div>
@@ -161,9 +161,38 @@ export default function HomePage() {
             <div className="text-4xl font-bold text-foreground mb-4">
               Component Showcase
             </div>
-            <div className="text-xl text-foreground/80 max-w-2xl mx-auto">
+            <div className="text-xl text-foreground-80 mx-auto">
               Explore our comprehensive collection of React components built
               with Modus Design System.
+            </div>
+
+            {/* Opacity Test Section */}
+            <div className="mt-8 p-6 bg-card border border-border rounded-lg">
+              <div className="text-lg font-medium text-foreground mb-4">
+                Opacity Variants Test
+              </div>
+              <div className="space-y-2">
+                <div className="text-foreground">text-foreground (100%)</div>
+                <div className="text-foreground-80">
+                  text-foreground-80 (80%)
+                </div>
+                <div className="text-foreground-60">
+                  text-foreground-60 (60%)
+                </div>
+                <div className="text-foreground-40">
+                  text-foreground-40 (40%)
+                </div>
+                <div className="text-foreground-20">
+                  text-foreground-20 (20%)
+                </div>
+              </div>
+              <div className="mt-4 space-y-2">
+                <div className="text-primary">text-primary (100%)</div>
+                <div className="text-primary-80">text-primary-80 (80%)</div>
+                <div className="text-primary-60">text-primary-60 (60%)</div>
+                <div className="text-primary-40">text-primary-40 (40%)</div>
+                <div className="text-primary-20">text-primary-20 (20%)</div>
+              </div>
             </div>
           </div>
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import DemoExample, { DemoExampleClean } from "../components/DemoExample";
+import { DemoExampleClean } from "../components/DemoExample";
 
 import DemoPage from "../components/DemoPage";
 
@@ -307,39 +307,6 @@ export default function ColorPalettePage() {
           ))}
         </div>
       </DemoExampleClean>
-
-      <DemoExample
-        title="How to Use These Colors"
-        description="Guidelines for using colors in your applications."
-      >
-        <div className="space-y-4 text-foreground">
-          <div>
-            <div className="font-medium mb-2">For Custom UI Elements:</div>
-            <div className="bg-background rounded-md text-sm font-mono p-2 border-default">
-              &lt;div className=&quot;bg-primary
-              text-primary-foreground&quot;&gt;Content&lt;/div&gt;
-            </div>
-          </div>
-          <div>
-            <div className="font-medium mb-2">For Modus Web Components:</div>
-            <div className="bg-background rounded-md text-sm font-mono p-2 border-default">
-              &lt;modus-wc-button
-              color=&quot;primary&quot;&gt;Button&lt;/modus-wc-button&gt;
-            </div>
-          </div>
-          <div>
-            <div className="font-medium mb-2">Don&apos;t mix the systems:</div>
-            <div className="bg-background rounded-md text-sm font-mono p-2 opacity-70 border-default">
-              &lt;div className=&quot;bg-secondary&quot;&gt;Custom
-              UI&lt;/div&gt; + &lt;modus-wc-button
-              color=&quot;secondary&quot;&gt;Button&lt;/modus-wc-button&gt;
-            </div>
-            <div className="text-xs text-foreground opacity-70 mt-1">
-              These will have different colors (gray vs yellow) - inconsistent!
-            </div>
-          </div>
-        </div>
-      </DemoExample>
     </DemoPage>
   );
 }

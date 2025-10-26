@@ -30,8 +30,8 @@ function ActionsDropdown() {
         menuItems={actionMenuItems}
         onItemSelect={handleItemSelect}
         buttonContent={
-          <div className="flex items-center gap-2 px-3 py-2">
-            <i className="modus-icons">more_vert</i>
+          <div className="flex items-center gap-2 ">
+            <i className="modus-icons text-sm">more_vertical</i>
             <div>Actions</div>
           </div>
         }
@@ -74,16 +74,14 @@ function FilterDropdown() {
     <div className="flex flex-col gap-3">
       <ModusDropdownMenu
         buttonColor="secondary"
-        buttonVariant="borderless"
+        buttonVariant="outlined"
         buttonSize="sm"
         menuPlacement="bottom-end"
         menuItems={filterMenuItems}
         onItemSelect={handleItemSelect}
         buttonContent={
-          <div className="flex items-center gap-2 px-2 py-1 text-sm">
-            <div>
-              {selectedFilter ? getFilterLabel(selectedFilter) : "Filter"}
-            </div>
+          <div className="flex items-center gap-2 ">
+            {selectedFilter ? getFilterLabel(selectedFilter) : "Filter"}
             <i className="modus-icons">expand_more</i>
           </div>
         }

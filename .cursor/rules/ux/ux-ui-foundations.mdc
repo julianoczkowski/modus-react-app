@@ -87,9 +87,10 @@ colors: {
 | Tooltip   | `<ModusTooltip />` | `text`, `position`                          | Short contextual hints only.                                          |          |                        |        |         |                                                       |
 | Icon      | `<ModusIcon />`    | `name`, `size`, `color`                     | Follows real Modus naming (kebab-case, outlined default).             |          |                        |        |         |                                                       |
 
-## 4 Iconography (Real Modus Icons)
+## 4 Iconography
 
-**REFERENCE**: For complete icon usage guidelines and valid icon names, see `.cursor/rules/modus-icons-react.mdc`
+**REFERENCE**: For complete icon usage guidelines see `.cursor/rules/modus-icons-react.mdc`
+**REFERANCE**: For allowed list of Modus icon names see `.cursor/rules/modus-icon-names.mdc`
 
 ### Import (already handled globally)
 

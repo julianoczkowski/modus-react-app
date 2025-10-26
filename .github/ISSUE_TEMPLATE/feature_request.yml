@@ -18,7 +18,7 @@ body:
       options:
         - label: I have searched existing issues and feature requests to avoid duplicates
           required: true
-        - label: This feature aligns with the app's scope (React 19 + Modus 2 integration)
+        - label: This feature aligns with the app's scope (React + Vite + Modus Design System integration)
           required: true
         - label: I have considered if this should be a separate package/plugin instead
           required: true
@@ -56,12 +56,15 @@ body:
       options:
         - Component Examples
         - Development Tools
+        - Vite Configuration
         - Build/Deployment
         - Documentation
         - Performance
         - Accessibility
         - Testing
         - Developer Experience
+        - TypeScript Integration
+        - Tailwind CSS Integration
         - Other
     validations:
       required: true
@@ -91,10 +94,12 @@ body:
         - label: Theme system
         - label: Color system
         - label: TypeScript definitions
-        - label: Build configuration
+        - label: Vite configuration
+        - label: Tailwind CSS integration
         - label: Development rules
         - label: MCP servers
         - label: Documentation
+        - label: Linting rules
 
   - type: textarea
     id: implementation
@@ -109,11 +114,17 @@ body:
       label: Usage Examples
       description: Provide examples of how this feature would be used
       placeholder: |
-        ```react
+        ```tsx
         // Example usage
-        <template>
-          <!-- Your example here -->
-        </template>
+        import { ModusButton } from './components/ModusButton';
+
+        function MyComponent() {
+          return (
+            <ModusButton variant="primary">
+              Your example here
+            </ModusButton>
+          );
+        }
         ```
 
   - type: checkboxes

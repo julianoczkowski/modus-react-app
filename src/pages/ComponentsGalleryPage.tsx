@@ -425,10 +425,9 @@ export default function ComponentsDemo() {
                 <ModusButton
                   color="primary"
                   variant="filled"
-                  size="sm"
+                  size="md"
                   fullWidth
                 >
-                  <i className="modus-icons mr-2">visibility</i>
                   View Demo
                 </ModusButton>
               </Link>

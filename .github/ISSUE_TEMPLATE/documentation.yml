@@ -53,6 +53,9 @@ body:
         - TypeScript definitions
         - Development rules (.cursor/rules/)
         - Package.json descriptions
+        - Vite configuration
+        - Tailwind configuration
+        - Component documentation
         - Other (please specify)
     validations:
       required: true
@@ -101,9 +104,12 @@ body:
         - label: Color system
         - label: Icon system
         - label: Theme system
+        - label: Vite configuration
+        - label: Tailwind CSS integration
         - label: Build/Deployment
         - label: Contributing guidelines
         - label: Security information
         - label: Troubleshooting
         - label: API reference
         - label: Examples/tutorials
+        - label: TypeScript integration

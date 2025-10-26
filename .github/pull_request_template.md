@@ -39,6 +39,7 @@ Fixes #(issue number)
 - [ ] **Modus styles are followed** (`npm run lint:styles` passes)
 - [ ] **No semantic HTML is used** (`npm run lint:semantic` passes)
 - [ ] **Modus icons are used correctly** (`npm run lint:icons` passes)
+- [ ] **Border usage follows guidelines** (`npm run lint:borders` passes)
 - [ ] **Responsive design** works on mobile and desktop
 - [ ] **Accessibility** - tested with keyboard navigation
 - [ ] **Build succeeds** (`npm run build`)
@@ -60,6 +61,8 @@ Tested in the following browsers:
 - [ ] **Event handling** functions properly
 - [ ] **Props and attributes** are properly typed
 - [ ] **Accessibility attributes** are present (ARIA labels, roles)
+- [ ] **Vite build process** works correctly
+- [ ] **Tailwind CSS** integration works properly
 
 ## 📸 Screenshots
 
@@ -79,10 +82,10 @@ Tested in the following browsers:
 
 - [ ] **Uses only approved Modus colors** (9 total: 5 base + 4 semantic)
 - [ ] **Uses valid Modus icon names** from the official list
-- [ ] **Follows Next.js component creation rules** (Tailwind classes, TypeScript interfaces)
+- [ ] **Follows React + Vite component creation rules** (Tailwind classes, TypeScript interfaces)
 - [ ] **Uses Tailwind classes instead of inline styles** (no `style={{}}` syntax)
 - [ ] **Uses div elements instead of semantic HTML** (no `<h1>`, `<section>`, etc.)
-- [ ] **Maintains theme compatibility** across all 4 Modus themes
+- [ ] **Maintains theme compatibility** across all 6 Modus themes
 - [ ] **Follows accessibility guidelines** (WCAG 2.1 AA compliance)
 
 ## 📋 Code Quality
@@ -171,6 +174,7 @@ Tested in the following browsers:
    - Run `npm run lint:styles` to verify no inline styles
    - Run `npm run lint:semantic` to verify no semantic HTML
    - Run `npm run lint:icons` to verify Modus icons usage
+   - Run `npm run lint:borders` to verify border usage
    - Test theme switching if UI changes were made
    - Verify accessibility with keyboard navigation
 

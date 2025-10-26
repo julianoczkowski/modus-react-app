@@ -53,6 +53,14 @@ export default function AppHeader() {
           >
             Components
           </ModusWcButton>
+          <ModusWcButton
+            color="primary"
+            variant="outlined"
+            size="sm"
+            onButtonClick={() => handleNavigation("/icons")}
+          >
+            Icons
+          </ModusWcButton>
         </div>
         <div className="flex items-center min-w-[140px] order-1 md:order-2">
           <ThemeSwitcherDropdown />

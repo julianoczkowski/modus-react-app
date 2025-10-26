@@ -18,6 +18,17 @@ Comprehensive essential rules for React + Vite development with Modus Design Sys
 - **Use hover states** - `hover:bg-primary/90` for interactive elements
 - **Test in all themes** - Ensure colors work in light and dark modes
 
+### Opacity Usage
+
+- **Use custom opacity utilities, not Tailwind /80 syntax** - `text-foreground-80` not `text-foreground/80`
+- **CSS variables don't work with Tailwind opacity modifiers** - Tailwind needs actual color values
+- **Use color-mix() for opacity variants** - Modern CSS function for proper opacity calculation
+- **All utilities defined in index.css** - No Tailwind config changes needed
+- **Respects theme switching** - Works in all 6 Modus themes
+- **Use semantic color names** - `foreground`, `primary`, `destructive`, etc.
+- **Available opacity levels** - `80`, `60`, `40`, `20` (e.g., `text-foreground-80`, `bg-primary-60`)
+- **Available utilities** - `text-*`, `bg-*`, `border-*` with opacity variants
+
 ### Border Usage
 
 - **Use design system border utilities only** - `border-default`, `border-success`, `border-warning`, `border-destructive`, `border-primary`
@@ -190,3 +201,7 @@ Comprehensive essential rules for React + Vite development with Modus Design Sys
 ## Reference
 
 This rule consolidates all essential Modus React development guidelines. For detailed patterns, examples, and advanced techniques, fetch the individual full rules as needed.
+
+### Opacity Utilities
+
+For detailed opacity utility patterns, migration guide, and advanced techniques, fetch the full rule: `modus-opacity-utilities-react`

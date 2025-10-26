@@ -8,6 +8,7 @@ import AppFooter from "./components/AppFooter";
 import ColorPalettePage from "./pages/ColorPalettePage";
 import ButtonDemoPage from "./pages/ButtonDemoPage";
 import HomePage from "./pages/HomePage";
+import IconsPage from "./pages/IconsPage";
 import { demoRoutes } from "./config/routes";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
                   <Route path="/" element={<HomePage />} />
                   <Route path="/components" element={<ComponentsDemo />} />
                   <Route path="/button-demo" element={<ButtonDemoPage />} />
+                  <Route path="/icons" element={<IconsPage />} />
                   {/* Dynamically generated demo routes */}
                   {demoRoutes.map(({ path, component: Component }) => (
                     <Route key={path} path={path} element={<Component />} />
