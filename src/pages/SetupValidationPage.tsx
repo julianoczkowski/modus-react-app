@@ -93,6 +93,19 @@ export default function SetupValidationPage() {
             </div>
           </div>
 
+          {/* Sample YouTube Player */}
+          <div className="max-w-4xl mx-auto w-full">
+            <div className="relative w-full overflow-hidden rounded-xl shadow-lg aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/aG7Eu7SkKZA?si=BCJ0yNUe07-BCA8a"
+                title="Modus 2.0 Setup Overview"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full"
+              />
+            </div>
+          </div>
+
           {/* Theme Switcher Section */}
           <ModusCard customClass="p-6 border-default">
             <ThemeToggleSimple />
