@@ -3,34 +3,65 @@
 import { useEffect, useRef } from "react";
 import { ModusWcDate } from "@trimble-oss/moduswebcomponents-react";
 
+/**
+ * Represents feedback for an input component.
+ */
 export interface InputFeedbackProp {
-  level: "error" | "info" | "success" | "warning";
+  /** The severity level of the feedback. */
+  level: 'error' | 'info' | 'success' | 'warning';
+  /** The message to display as feedback. */
   message?: string;
 }
 
+/**
+ * Props for the ModusDate component.
+ */
 export interface ModusDateProps {
-  value?: string; // Format: YYYY-MM-DD
+  /** The value of the date input (Format: YYYY-MM-DD). */
+  value?: string;
+  /** Whether the date input has a border. */
   bordered?: boolean;
+  /** Whether the date input is disabled. */
   disabled?: boolean;
+  /** Feedback to display for the date input. */
   feedback?: InputFeedbackProp;
+  /** The ID of the input element. */
   inputId?: string;
+  /** The tab index of the input element. */
   inputTabIndex?: number;
+  /** The label for the date input. */
   label?: string;
-  max?: string; // Format: YYYY-MM-DD
-  min?: string; // Format: YYYY-MM-DD
+  /** The maximum allowed date (Format: YYYY-MM-DD). */
+  max?: string;
+  /** The minimum allowed date (Format: YYYY-MM-DD). */
+  min?: string;
+  /** The name of the input element. */
   name?: string;
+  /** Whether the date input is read-only. */
   readOnly?: boolean;
+  /** Whether the date input is required. */
   required?: boolean;
-  size?: "sm" | "md" | "lg";
+  /** The size of the date input. */
+  size?: 'sm' | 'md' | 'lg';
+  /** A custom CSS class to apply to the date input. */
   customClass?: string;
-  "aria-label"?: string;
+  /** The ARIA label for the date input. */
+  'aria-label'?: string;
+  /** A callback function to handle input changes. */
   onInputChange?: (event: CustomEvent<InputEvent>) => void;
+  /** A callback function to handle input focus. */
   onInputFocus?: (event: CustomEvent<FocusEvent>) => void;
+  /** A callback function to handle input blur. */
   onInputBlur?: (event: CustomEvent<FocusEvent>) => void;
 }
 
+/**
+ * Renders a Modus date input component.
+ * @param {ModusDateProps} props - The component props.
+ * @returns {JSX.Element} The rendered date input component.
+ */
 export default function ModusDate({
-  value = "",
+  value = '',
   bordered = true,
   disabled = false,
   feedback,
@@ -39,12 +70,12 @@ export default function ModusDate({
   label,
   max,
   min,
-  name = "",
+  name = '',
   readOnly = false,
   required = false,
-  size = "md",
+  size = 'md',
   customClass,
-  "aria-label": ariaLabel,
+  'aria-label': ariaLabel,
   onInputChange,
   onInputFocus,
   onInputBlur,

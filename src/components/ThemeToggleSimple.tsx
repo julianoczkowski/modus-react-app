@@ -3,11 +3,20 @@ import { type Theme } from "../contexts/ThemeContextData";
 import { useState, useEffect } from "react";
 import ModusButton from "./ModusButton";
 
+/**
+ * Props for the ThemeToggleSimple component.
+ */
 interface ThemeToggleSimpleProps {
+  /** A custom CSS class to apply to the component. */
   className?: string;
 }
 
-function ThemeToggleSimpleContent({ className = "" }: ThemeToggleSimpleProps) {
+/**
+ * Renders the content of the simple theme toggle.
+ * @param {ThemeToggleSimpleProps} props - The component props.
+ * @returns {JSX.Element} The rendered theme toggle content.
+ */
+function ThemeToggleSimpleContent({ className = '' }: ThemeToggleSimpleProps) {
   const { theme, setTheme } = useTheme();
 
   const themeGroups = [

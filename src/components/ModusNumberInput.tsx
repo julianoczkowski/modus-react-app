@@ -9,58 +9,75 @@ interface InputFeedback {
   message?: string;
 }
 
+/**
+ * Props for the ModusNumberInput component.
+ */
 interface ModusNumberInputProps {
-  // Basic configuration
+  /** The label for the number input. */
   label?: string;
+  /** The placeholder text for the number input. */
   placeholder?: string;
+  /** The value of the number input. */
   value?: string;
+  /** The name of the number input. */
   name?: string;
-
-  // Size and appearance
-  size?: "sm" | "md" | "lg";
+  /** The size of the number input. */
+  size?: 'sm' | 'md' | 'lg';
+  /** Whether the number input has a border. */
   bordered?: boolean;
+  /** A custom CSS class to apply to the number input. */
   customClass?: string;
-
-  // Input behavior
-  type?: "number" | "range";
-  inputMode?: "decimal" | "numeric" | "none";
-  autoComplete?: "on" | "off";
-
-  // Validation and constraints
+  /** The type of the number input. */
+  type?: 'number' | 'range';
+  /** The input mode for the number input. */
+  inputMode?: 'decimal' | 'numeric' | 'none';
+  /** Whether to enable autocomplete for the number input. */
+  autoComplete?: 'on' | 'off';
+  /** The minimum allowed value. */
   min?: number;
+  /** The maximum allowed value. */
   max?: number;
+  /** The step interval for the number input. */
   step?: number;
+  /** Whether the number input is required. */
   required?: boolean;
+  /** Whether the number input is disabled. */
   disabled?: boolean;
+  /** Whether the number input is read-only. */
   readOnly?: boolean;
-
-  // Currency support
+  /** The currency symbol to display. */
   currencySymbol?: string;
-
-  // Feedback system
+  /** Feedback to display for the number input. */
   feedback?: InputFeedback;
-
-  // Accessibility
+  /** The ID of the input element. */
   inputId?: string;
+  /** The tab index of the input element. */
   inputTabIndex?: number;
+  /** The ARIA label for the number input. */
   ariaLabel?: string;
-
-  // Event handlers
+  /** A callback function to handle input focus. */
   onInputFocus?: (event: FocusEvent) => void;
+  /** A callback function to handle input blur. */
   onInputBlur?: (event: FocusEvent) => void;
+  /** A callback function to handle input changes. */
   onInputChange?: (value: string) => void;
 }
 
+/**
+ * Renders a Modus number input component.
+ * @param {ModusNumberInputProps} props - The component props.
+ * @returns {JSX.Element} The rendered number input component.
+ */
 export default function ModusNumberInput({
   label,
-  placeholder = "",
-  value = "",
+  placeholder = '',
+  value = '',
   name,
-  size = "md",
+  size = 'md',
   bordered = true,
   customClass,
-  type = "number",
-  inputMode = "numeric",
+  type = 'number',
+  inputMode = 'numeric',
   autoComplete,
   min,
   max,

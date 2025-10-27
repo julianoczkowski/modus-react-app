@@ -12,28 +12,55 @@ type EnterKeyHint =
   | "search"
   | "send";
 
+/**
+ * Props for the ModusTextarea component.
+ */
 export interface ModusTextareaProps {
+  /** The value of the textarea. */
   value?: string;
+  /** The label for the textarea. */
   label?: string;
+  /** The placeholder text for the textarea. */
   placeholder?: string;
+  /** Helper text to display below the textarea. */
   helperText?: string;
+  /** Error text to display below the textarea. */
   errorText?: string;
+  /** Valid text to display below the textarea. */
   validText?: string;
+  /** Feedback to display for the textarea. */
   feedback?: InputFeedbackProp;
+  /** The size of the textarea. */
   size?: TextareaSize;
+  /** The number of rows to display. */
   rows?: number;
+  /** The maximum allowed length of the input. */
   maxLength?: number;
+  /** The minimum allowed length of the input. */
   minLength?: number;
+  /** Whether the textarea is required. */
   required?: boolean;
+  /** Whether the textarea is disabled. */
   disabled?: boolean;
+  /** Whether the textarea is read-only. */
   readOnly?: boolean;
+  /** The enter key hint for the virtual keyboard. */
   enterkeyhint?: EnterKeyHint;
+  /** The name of the textarea. */
   name?: string;
+  /** A custom CSS class to apply to the textarea. */
   customClass?: string;
+  /** The ARIA label for the textarea. */
   ariaLabel?: string;
+  /** A callback function to handle value changes. */
   onValueChange?: (value: string) => void;
 }
 
+/**
+ * Renders a Modus textarea component.
+ * @param {ModusTextareaProps} props - The component props.
+ * @returns {JSX.Element} The rendered textarea component.
+ */
 export default function ModusTextarea({
   value = "",
   label,
@@ -57,6 +84,16 @@ export default function ModusTextarea({
 }: ModusTextareaProps) {
   const textareaRef = useRef<HTMLModusWcTextareaElement>(null);
 
+  /**
+   * Computes the appropriate feedback configuration based on provided props.
+   *
+   * This memoized function determines the feedback level and message by
+   * checking props in priority order: feedback > errorText > validText > helperText.
+   * This ensures consistent feedback display while allowing flexible prop usage.
+   *
+   * @returns {InputFeedbackProp | undefined} The computed feedback configuration
+   * @private
+   */
   const computedFeedback = useMemo<InputFeedbackProp | undefined>(() => {
     if (feedback) {
       return feedback;

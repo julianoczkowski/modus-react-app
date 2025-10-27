@@ -1,3 +1,28 @@
+/**
+ * Comprehensive collection of Modus Design System icons organized by category.
+ *
+ * This object contains all available Modus icons grouped into logical categories
+ * for easy discovery and usage. Each category contains an array of icon names
+ * that can be used with the ModusIcon component or directly with the modus-icons
+ * CSS class.
+ *
+ * @example
+ * // Using with ModusIcon component
+ * <ModusIcon name="add" size="md" />
+ *
+ * @example
+ * // Using with CSS class
+ * <i className="modus-icons">add</i>
+ *
+ * @example
+ * // Accessing icons by category
+ * const navigationIcons = modusIcons["Navigation & UI"];
+ * const actionIcons = modusIcons["Actions & Operations"];
+ *
+ * @see {@link allModusIcons} - Flattened array of all icon names
+ * @see {@link totalIconCount} - Total number of available icons
+ * @see {@link categoryCount} - Number of icon categories
+ */
 export const modusIcons = {
   "Navigation & UI": [
     "arrow_back",
@@ -773,11 +798,68 @@ export const modusIcons = {
   ],
 };
 
-// Flatten all icons for easy access
+/**
+ * Flattened array containing all Modus icon names from all categories.
+ *
+ * This utility provides a single array of all available icon names,
+ * making it easy to iterate through all icons or perform searches
+ * across the entire icon collection.
+ *
+ * @example
+ * // Search for icons containing "arrow"
+ * const arrowIcons = allModusIcons.filter(icon => icon.includes('arrow'));
+ *
+ * @example
+ * // Display all icons in a grid
+ * allModusIcons.map(iconName => (
+ *   <ModusIcon key={iconName} name={iconName} size="sm" />
+ * ))
+ *
+ * @see {@link modusIcons} - Categorized icon collection
+ * @see {@link totalIconCount} - Total number of icons
+ */
 export const allModusIcons = Object.values(modusIcons).flat();
 
-// Get total count
+/**
+ * Total number of available Modus icons across all categories.
+ *
+ * This count represents the sum of all icon names in the modusIcons
+ * collection, providing a quick way to verify icon availability
+ * or display statistics about the icon library.
+ *
+ * @example
+ * // Display icon count in UI
+ * <div>Total icons available: {totalIconCount}</div>
+ *
+ * @example
+ * // Validate icon count
+ * console.log(`Modus icon library contains ${totalIconCount} icons`);
+ *
+ * @see {@link modusIcons} - Categorized icon collection
+ * @see {@link allModusIcons} - Flattened icon array
+ * @see {@link categoryCount} - Number of categories
+ */
 export const totalIconCount = allModusIcons.length;
 
-// Get category count
+/**
+ * Number of icon categories in the Modus icon collection.
+ *
+ * This count represents the number of top-level categories used
+ * to organize the icon collection, useful for displaying category
+ * statistics or iterating through all available categories.
+ *
+ * @example
+ * // Display category count
+ * <div>Icons organized into {categoryCount} categories</div>
+ *
+ * @example
+ * // Iterate through all categories
+ * Object.keys(modusIcons).forEach(category => {
+ *   console.log(`Category: ${category}`);
+ * });
+ *
+ * @see {@link modusIcons} - Categorized icon collection
+ * @see {@link allModusIcons} - Flattened icon array
+ * @see {@link totalIconCount} - Total number of icons
+ */
 export const categoryCount = Object.keys(modusIcons).length;

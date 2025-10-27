@@ -1,11 +1,25 @@
 import type { ReactNode } from "react";
 
+/**
+ * Props for the DemoExample component.
+ */
 interface DemoExampleProps {
+  /** The title of the demo example. */
   title: string;
+  /** A description of the demo example. */
   description: string | ReactNode;
+  /** The content of the demo example. */
   children: ReactNode;
 }
 
+/**
+ * Renders a styled container for a demo example.
+ * @param {DemoExampleProps} props - The component props.
+ * @param {string} props.title - The title of the demo example.
+ * @param {string | ReactNode} props.description - A description of the demo example.
+ * @param {ReactNode} props.children - The content of the demo example.
+ * @returns {JSX.Element} The rendered demo example component.
+ */
 export default function DemoExample({
   title,
   description,
@@ -22,6 +36,14 @@ export default function DemoExample({
   );
 }
 
+/**
+ * Renders a clean, unstyled container for a demo example.
+ * @param {DemoExampleProps} props - The component props.
+ * @param {string} props.title - The title of the demo example.
+ * @param {string | ReactNode} props.description - A description of the demo example.
+ * @param {ReactNode} props.children - The content of the demo example.
+ * @returns {JSX.Element} The rendered clean demo example component.
+ */
 export function DemoExampleClean({
   title,
   description,

@@ -3,6 +3,22 @@ import { DemoExampleClean } from "../components/DemoExample";
 
 import DemoPage from "../components/DemoPage";
 
+/**
+ * Renders a comprehensive page that displays the Modus Design System color palette.
+ *
+ * This page showcases all available colors in the Modus Design System,
+ * including semantic colors, base colors, and their various opacity variants.
+ * Each color is displayed with its name, hex value, and usage examples.
+ * The page includes interactive features for exploring color combinations
+ * and understanding proper color usage patterns.
+ *
+ * @example
+ * // The page automatically displays all colors from the design system
+ * <ColorPalettePage />
+ *
+ * @returns {JSX.Element} The rendered color palette page with interactive color swatches
+ * @see {@link https://modus.trimble.com/design/color} - Modus Design System color documentation
+ */
 export default function ColorPalettePage() {
   const [mounted, setMounted] = useState(false);
 

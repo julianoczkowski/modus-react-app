@@ -6,32 +6,54 @@ import { ModusWcRating } from "@trimble-oss/moduswebcomponents-react";
 type RatingVariant = "star" | "heart" | "smiley" | "thumb";
 type RatingSize = "sm" | "md" | "lg";
 
+/**
+ * Represents the detail of a rating change event.
+ */
 export interface RatingChangeDetail {
+  /** The new rating value. */
   newRating: number;
 }
 
+/**
+ * Props for the ModusRating component.
+ */
 export interface ModusRatingProps {
+  /** The variant of the rating component. */
   variant?: RatingVariant;
+  /** The total number of rating items. */
   count?: number;
+  /** The current rating value. */
   value?: number;
+  /** Whether to allow half ratings. */
   allowHalf?: boolean;
+  /** The size of the rating items. */
   size?: RatingSize;
+  /** Whether the rating component is disabled. */
   disabled?: boolean;
+  /** A custom CSS class to apply to the rating component. */
   customClass?: string;
-  "aria-label"?: string;
+  /** The ARIA label for the rating component. */
+  'aria-label'?: string;
+  /** A function to get the ARIA label text for a given rating value. */
   getAriaLabelText?: (ratingValue: number) => string;
+  /** A callback function to handle rating changes. */
   onRatingChange?: (event: CustomEvent<RatingChangeDetail>) => void;
 }
 
+/**
+ * Renders a Modus rating component.
+ * @param {ModusRatingProps} props - The component props.
+ * @returns {JSX.Element} The rendered rating component.
+ */
 export default function ModusRating({
-  variant = "smiley",
+  variant = 'smiley',
   count = 5,
   value = 0,
   allowHalf = false,
-  size = "md",
+  size = 'md',
   disabled = false,
   customClass,
-  "aria-label": ariaLabel,
+  'aria-label': ariaLabel,
   getAriaLabelText,
   onRatingChange,
 }: ModusRatingProps) {

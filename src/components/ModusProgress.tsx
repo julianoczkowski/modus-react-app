@@ -4,25 +4,41 @@ import type { ReactNode } from "react";
 import { useMemo } from "react";
 import { ModusWcProgress } from "@trimble-oss/moduswebcomponents-react";
 
+/**
+ * Props for the ModusProgress component.
+ */
 interface ModusProgressProps {
-  variant?: "default" | "radial";
+  /** The variant of the progress bar. */
+  variant?: 'default' | 'radial';
+  /** The current value of the progress bar. */
   value?: number;
+  /** The maximum value of the progress bar. */
   max?: number;
+  /** Whether the progress is indeterminate. */
   indeterminate?: boolean;
+  /** The label for the progress bar. */
   label?: string;
+  /** A custom CSS class to apply to the progress bar. */
   customClass?: string;
+  /** The ARIA label for the progress bar. */
   ariaLabel?: string;
+  /** The content to display inside the progress bar (for radial variant). */
   children?: ReactNode;
 }
 
+/**
+ * Renders a Modus progress component.
+ * @param {ModusProgressProps} props - The component props.
+ * @returns {JSX.Element} The rendered progress component.
+ */
 export default function ModusProgress({
-  variant = "default",
+  variant = 'default',
   value = 0,
   max = 100,
   indeterminate = false,
-  label = "",
-  customClass = "",
-  ariaLabel = "Progress status",
+  label = '',
+  customClass = '',
+  ariaLabel = 'Progress status',
   children,
 }: ModusProgressProps) {
   const normalizedValue = useMemo(() => {

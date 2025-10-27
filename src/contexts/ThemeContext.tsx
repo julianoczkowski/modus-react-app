@@ -14,8 +14,13 @@ const VALID_THEMES: Theme[] = [
   "connect-dark",
 ];
 
+/**
+ * A provider component that manages the application's theme.
+ * @param {ThemeProviderProps} props - The component props.
+ * @returns {JSX.Element} The rendered theme provider.
+ */
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<Theme>("modus-classic-light");
+  const [theme, setThemeState] = useState<Theme>('modus-classic-light');
   const [mounted, setMounted] = useState(false);
 
   // Derived state

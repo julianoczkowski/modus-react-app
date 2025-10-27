@@ -275,7 +275,15 @@ const colors = {
 };
 
 /**
- * Get suggestion for a Tailwind opacity pattern
+ * Gets a suggestion for replacing a Tailwind opacity pattern with a custom utility.
+ *
+ * This function analyzes a matched Tailwind opacity pattern (e.g., "text-foreground/80")
+ * and returns a suggestion for the equivalent custom opacity utility (e.g., "text-foreground-80").
+ * It handles the conversion from Tailwind's slash syntax to the custom utility format.
+ *
+ * @param {Array} match - The regex match result containing the full class name
+ * @returns {Object|null} Suggestion object with original, suggested, colorName, and opacity, or null if no suggestion available
+ * @private
  */
 function getSuggestion(match) {
   // Extract the full class name (e.g., "text-foreground/80")
@@ -303,7 +311,15 @@ function getSuggestion(match) {
 }
 
 /**
- * Check a single file for opacity violations
+ * Checks a single file for Tailwind opacity syntax violations.
+ *
+ * This function scans a file for patterns that use Tailwind's slash syntax
+ * for opacity (e.g., "text-foreground/80") and suggests replacements with
+ * custom opacity utilities (e.g., "text-foreground-80").
+ *
+ * @param {string} filePath - The path to the file to check
+ * @returns {Array} Array of violation objects found in the file
+ * @private
  */
 function checkFile(filePath) {
   const content = fs.readFileSync(filePath, "utf8");
@@ -335,6 +351,16 @@ function checkFile(filePath) {
 /**
  * Format violation for display
  */
+/**
+ * Formats a violation object for display in the console output.
+ *
+ * This function takes a violation object and formats it into a readable
+ * string with proper styling and suggestions for fixing the issue.
+ *
+ * @param {Object} violation - The violation object to format
+ * @returns {Object} Formatted violation with message, suggestion, and explanation
+ * @private
+ */
 function formatViolation(violation) {
   const { file, line, column, match, suggestion } = violation;
   const relativePath = path.relative(process.cwd(), file);
@@ -348,7 +374,15 @@ function formatViolation(violation) {
 }
 
 /**
- * Main function
+ * Main function that orchestrates the opacity utility checking process.
+ *
+ * This function scans all relevant files in the project for Tailwind opacity
+ * syntax violations and provides detailed feedback with suggestions for fixes.
+ * It handles file discovery, violation detection, and formatted output.
+ *
+ * @async
+ * @returns {Promise<void>}
+ * @private
  */
 async function main() {
   console.log(

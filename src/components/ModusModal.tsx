@@ -2,43 +2,65 @@ import { ModusWcModal } from "@trimble-oss/moduswebcomponents-react";
 import type { ReactNode } from "react";
 import { useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 
+/**
+ * Props for the ModusModal component.
+ */
 interface ModusModalProps {
-  // Modal identification
+  /** A unique identifier for the modal. */
   modalId: string;
+  /** The ARIA label for the modal. */
   ariaLabel?: string;
 
-  // Modal appearance
-  backdrop?: "default" | "static";
-  position?: "top" | "center" | "bottom";
+  /** The type of backdrop for the modal. */
+  backdrop?: 'default' | 'static';
+  /** The position of the modal. */
+  position?: 'top' | 'center' | 'bottom';
+  /** Whether the modal should be fullscreen. */
   fullscreen?: boolean;
+  /** Whether to show the fullscreen toggle button. */
   showFullscreenToggle?: boolean;
+  /** Whether to show the close button. */
   showClose?: boolean;
+  /** A custom CSS class to apply to the modal. */
   customClass?: string;
 
-  // Content slots
+  /** The header content of the modal. */
   header?: ReactNode;
-  children: ReactNode; // Content slot
+  /** The main content of the modal. */
+  children: ReactNode;
+  /** The footer content of the modal. */
   footer?: ReactNode;
 
-  // Event handling
+  /** A callback function to handle the close event. */
   onClose?: () => void;
 
-  // Styling
+  /** A CSS class to apply to the modal. */
   className?: string;
 }
 
+/**
+ * A ref object for the ModusModal component.
+ */
 export interface ModusModalRef {
+  /** Opens the modal. */
   openModal: () => void;
+  /** Closes the modal. */
   closeModal: () => void;
 }
 
+/**
+ * Renders a Modus modal component.
+ * @param {ModusModalProps} props - The component props.
+ * @param {React.Ref<ModusModalRef>} ref - The ref object for the modal.
+ * @returns {JSX.Element} The rendered modal component.
+ */
 const ModusModal = forwardRef<ModusModalRef, ModusModalProps>(
   (
     {
       modalId,
       ariaLabel,
-      backdrop = "default",
-      position = "center",
+      backdrop = 'default',
+      position = 'center',
       fullscreen = false,
       showFullscreenToggle = false,
       showClose = true,

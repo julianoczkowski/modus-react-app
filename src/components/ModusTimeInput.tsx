@@ -2,34 +2,65 @@ import { useEffect, useRef } from "react";
 import { ModusWcTimeInput } from "@trimble-oss/moduswebcomponents-react";
 import type { InputFeedbackProp } from "./ModusInputFeedback";
 
+/**
+ * Props for the ModusTimeInput component.
+ */
 export interface ModusTimeInputProps {
+  /** The value of the time input. */
   value?: string;
+  /** The label for the time input. */
   label?: string;
+  /** The name of the time input. */
   name?: string;
+  /** The ID of the input element. */
   inputId?: string;
+  /** The minimum allowed time. */
   min?: string;
+  /** The maximum allowed time. */
   max?: string;
+  /** The step interval for the time input. */
   step?: number;
+  /** Whether to show the seconds field. */
   showSeconds?: boolean;
+  /** The ID of the datalist to use. */
   datalistId?: string;
+  /** The options to display in the datalist. */
   datalistOptions?: string[];
-  autoComplete?: "on" | "off";
+  /** Whether to enable autocomplete for the time input. */
+  autoComplete?: 'on' | 'off';
+  /** Whether the time input has a border. */
   bordered?: boolean;
+  /** Whether the time input is disabled. */
   disabled?: boolean;
+  /** Whether the time input is read-only. */
   readOnly?: boolean;
+  /** Whether the time input is required. */
   required?: boolean;
-  size?: "sm" | "md" | "lg";
+  /** The size of the time input. */
+  size?: 'sm' | 'md' | 'lg';
+  /** The tab index of the input element. */
   inputTabIndex?: number;
+  /** A custom CSS class to apply to the time input. */
   customClass?: string;
+  /** Feedback to display for the time input. */
   feedback?: InputFeedbackProp;
+  /** The ARIA label for the time input. */
   ariaLabel?: string;
+  /** A callback function to handle input changes. */
   onInputChange?: (event: CustomEvent<Event>) => void;
+  /** A callback function to handle input focus. */
   onInputFocus?: (event: CustomEvent<FocusEvent>) => void;
+  /** A callback function to handle input blur. */
   onInputBlur?: (event: CustomEvent<FocusEvent>) => void;
 }
 
+/**
+ * Renders a Modus time input component.
+ * @param {ModusTimeInputProps} props - The component props.
+ * @returns {JSX.Element} The rendered time input component.
+ */
 export default function ModusTimeInput({
-  value = "",
+  value = '',
   label,
   name,
   inputId,
@@ -44,7 +75,7 @@ export default function ModusTimeInput({
   disabled = false,
   readOnly = false,
   required = false,
-  size = "md",
+  size = 'md',
   inputTabIndex,
   customClass,
   feedback,
