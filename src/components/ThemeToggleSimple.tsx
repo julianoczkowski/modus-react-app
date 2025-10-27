@@ -97,7 +97,7 @@ function ThemeToggleSimpleContent({ className = "" }: ThemeToggleSimpleProps) {
             color="primary"
             variant="outlined"
             size="md"
-            icon={getCurrentMode() === "light" ? "sun" : "dark_mode"}
+            icon={getCurrentMode() === "light" ? "sun" : "moon"}
             onButtonClick={toggleMode}
           >
             {getCurrentMode() === "light" ? "Light Mode" : "Dark Mode"}
@@ -118,18 +118,26 @@ export default function ThemeToggleSimple(props: ThemeToggleSimpleProps) {
 
   // Prevent hydration mismatch
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   if (!mounted) {
     return (
       <div className={props.className || ""}>
-        <div className="animate-pulse">
-          <div className="h-8 w-32 rounded bg-muted mb-4" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="h-6 w-24 rounded bg-muted" />
-            ))}
+        <div className="space-y-6">
+          <div className="text-lg font-semibold text-foreground">
+            Theme Selection
+          </div>
+          <div className="animate-pulse">
+            <div className="h-8 w-32 rounded bg-muted mb-4" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="h-6 w-24 rounded bg-muted" />
+              ))}
+            </div>
           </div>
         </div>
       </div>

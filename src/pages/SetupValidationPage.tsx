@@ -14,7 +14,10 @@ export default function SetupValidationPage() {
 
   // Prevent hydration mismatch
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const openCenterModal = () => {
@@ -43,13 +46,22 @@ export default function SetupValidationPage() {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-background">
-        <div className="animate-pulse">
-          <div className="h-96 bg-muted rounded mb-8" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="min-h-screen bg-background flex flex-col">
+        <div className="flex-1">
+          <div className="max-w-6xl mx-auto px-4 py-32 pb-8 flex flex-col gap-6">
+            <div className="text-center space-y-6">
+              <div className="h-16 bg-muted rounded animate-pulse" />
+              <div className="h-8 bg-muted rounded animate-pulse max-w-4xl mx-auto" />
+            </div>
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="h-32 bg-muted rounded-lg" />
+              <div key={i} className="h-32 bg-muted rounded-lg animate-pulse" />
             ))}
+          </div>
+        </div>
+        <div className="border-t border-border bg-card py-6">
+          <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="h-4 w-64 bg-muted rounded animate-pulse" />
+            <div className="h-4 w-32 bg-muted rounded animate-pulse" />
           </div>
         </div>
       </div>
@@ -69,7 +81,7 @@ export default function SetupValidationPage() {
     <div className="min-h-screen bg-background flex flex-col">
       {/* Main Content */}
       <div className="flex-1">
-        <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col gap-6">
+        <div className="max-w-6xl mx-auto px-4 py-32 pb-8 flex flex-col gap-6">
           {/* Hero Section */}
           <div className="text-center space-y-6">
             <div className="text-5xl md:text-6xl font-bold text-foreground">
