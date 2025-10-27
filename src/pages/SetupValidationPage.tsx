@@ -138,7 +138,7 @@ export default function SetupValidationPage() {
 
           {/* Card Example Section */}
           <ModusCard
-            customClass="p-6 border-default"
+            customClass="p-6 border-dashed"
             title="Card Component Example"
             subtitle="This demonstrates the ModusCard component working correctly"
           >
