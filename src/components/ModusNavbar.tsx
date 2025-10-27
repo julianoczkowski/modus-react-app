@@ -154,38 +154,84 @@ export default function ModusNavbar({
   const navbarRef = useRef<HTMLElement>(null);
 
   // Event handlers with useCallback for performance
+  /**
+   * Handles AI button click events.
+   *
+   * @private
+   */
   const handleAiClick = useCallback(() => {
     onAiClick?.();
   }, [onAiClick]);
 
+  /**
+   * Handles apps menu button click events.
+   *
+   * @private
+   */
   const handleAppsClick = useCallback(() => {
     onAppsClick?.();
   }, [onAppsClick]);
 
+  /**
+   * Handles help button click events.
+   *
+   * @private
+   */
   const handleHelpClick = useCallback(() => {
     onHelpClick?.();
   }, [onHelpClick]);
 
+  /**
+   * Handles notifications button click events.
+   *
+   * @private
+   */
   const handleNotificationsClick = useCallback(() => {
     onNotificationsClick?.();
   }, [onNotificationsClick]);
 
+  /**
+   * Handles search button click events.
+   *
+   * @private
+   */
   const handleSearchClick = useCallback(() => {
     onSearchClick?.();
   }, [onSearchClick]);
 
+  /**
+   * Handles sign out button click events.
+   *
+   * @private
+   */
   const handleSignOutClick = useCallback(() => {
     onSignOutClick?.();
   }, [onSignOutClick]);
 
+  /**
+   * Handles My Trimble button click events.
+   *
+   * @private
+   */
   const handleMyTrimbleClick = useCallback(() => {
     onMyTrimbleClick?.();
   }, [onMyTrimbleClick]);
 
+  /**
+   * Handles Trimble logo click events.
+   *
+   * @private
+   */
   const handleTrimbleLogoClick = useCallback(() => {
     onTrimbleLogoClick?.();
   }, [onTrimbleLogoClick]);
 
+  /**
+   * Handles search input change events with debouncing.
+   *
+   * @param {Event} event - The search input change event
+   * @private
+   */
   const handleSearchChange = useCallback(
     (event: Event) => {
       const customEvent = event as CustomEvent<{ value: string }>;
@@ -194,6 +240,12 @@ export default function ModusNavbar({
     [onSearchChange]
   );
 
+  /**
+   * Handles main menu open/close state changes.
+   *
+   * @param {Event} event - The menu state change event
+   * @private
+   */
   const handleMainMenuOpenChange = useCallback(
     (event: Event) => {
       const customEvent = event as CustomEvent<boolean>;
@@ -202,6 +254,12 @@ export default function ModusNavbar({
     [onMainMenuOpenChange]
   );
 
+  /**
+   * Handles notifications menu open/close state changes.
+   *
+   * @param {Event} event - The menu state change event
+   * @private
+   */
   const handleNotificationsMenuOpenChange = useCallback(
     (event: Event) => {
       const customEvent = event as CustomEvent<boolean>;
@@ -210,6 +268,12 @@ export default function ModusNavbar({
     [onNotificationsMenuOpenChange]
   );
 
+  /**
+   * Handles apps menu open/close state changes.
+   *
+   * @param {Event} event - The menu state change event
+   * @private
+   */
   const handleAppsMenuOpenChange = useCallback(
     (event: Event) => {
       const customEvent = event as CustomEvent<boolean>;
@@ -218,6 +282,12 @@ export default function ModusNavbar({
     [onAppsMenuOpenChange]
   );
 
+  /**
+   * Handles search input open/close state changes.
+   *
+   * @param {Event} event - The search input state change event
+   * @private
+   */
   const handleSearchInputOpenChange = useCallback(
     (event: Event) => {
       const customEvent = event as CustomEvent<boolean>;
@@ -226,6 +296,12 @@ export default function ModusNavbar({
     [onSearchInputOpenChange]
   );
 
+  /**
+   * Handles user menu open/close state changes.
+   *
+   * @param {Event} event - The menu state change event
+   * @private
+   */
   const handleUserMenuOpenChange = useCallback(
     (event: Event) => {
       const customEvent = event as CustomEvent<boolean>;
@@ -234,6 +310,12 @@ export default function ModusNavbar({
     [onUserMenuOpenChange]
   );
 
+  /**
+   * Handles condensed menu open/close state changes.
+   *
+   * @param {Event} event - The menu state change event
+   * @private
+   */
   const handleCondensedMenuOpenChange = useCallback(
     (event: Event) => {
       const customEvent = event as CustomEvent<boolean>;

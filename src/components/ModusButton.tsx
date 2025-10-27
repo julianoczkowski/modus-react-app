@@ -6,13 +6,13 @@ import type { ReactNode } from "react";
  */
 interface ModusButtonProps {
   /** The color of the button. */
-  color?: 'primary' | 'secondary' | 'tertiary' | 'warning' | 'danger';
+  color?: "primary" | "secondary" | "tertiary" | "warning" | "danger";
   /** The variant of the button. */
-  variant?: 'filled' | 'outlined' | 'borderless';
+  variant?: "filled" | "outlined" | "borderless";
   /** The size of the button. */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: "xs" | "sm" | "md" | "lg";
   /** The shape of the button. */
-  shape?: 'rectangle' | 'square' | 'circle';
+  shape?: "rectangle" | "square" | "circle";
 
   /** Whether the button is disabled. */
   disabled?: boolean;
@@ -21,14 +21,14 @@ interface ModusButtonProps {
   /** Whether the button is pressed. */
   pressed?: boolean;
   /** The type of the button. */
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
 
   /** The content to display inside the button. */
   children?: ReactNode;
   /** An icon to display in the button. */
   icon?: string;
   /** The position of the icon relative to the button text. */
-  iconPosition?: 'left' | 'right' | 'only';
+  iconPosition?: "left" | "right" | "only";
 
   /** The ARIA label for the button. */
   ariaLabel?: string;
@@ -41,27 +41,64 @@ interface ModusButtonProps {
 }
 
 /**
- * Renders a Modus button component.
+ * Renders a Modus button component with full customization support.
+ *
+ * @example
+ * // Basic button
+ * <ModusButton>Click me</ModusButton>
+ *
+ * @example
+ * // Icon button with custom styling
+ * <ModusButton
+ *   icon="add"
+ *   iconPosition="left"
+ *   color="primary"
+ *   size="lg"
+ * >
+ *   Add Item
+ * </ModusButton>
+ *
+ * @example
+ * // Icon-only button with accessibility
+ * <ModusButton
+ *   icon="settings"
+ *   iconPosition="only"
+ *   ariaLabel="Open settings"
+ * />
+ *
  * @param {ModusButtonProps} props - The component props.
  * @returns {JSX.Element} The rendered button component.
+ * @see {@link https://modus.trimble.com/components/button} - Modus Button documentation
  */
 export default function ModusButton({
-  color = 'primary',
-  variant = 'filled',
-  size = 'md',
-  shape = 'rectangle',
+  color = "primary",
+  variant = "filled",
+  size = "md",
+  shape = "rectangle",
   disabled = false,
   fullWidth = false,
   pressed = false,
-  type = 'button',
+  type = "button",
   children,
   icon,
-  iconPosition = 'left',
+  iconPosition = "left",
   ariaLabel,
   onButtonClick,
   className,
 }: ModusButtonProps) {
-  // Handle icon rendering
+  /**
+   * Renders an icon with proper positioning and styling based on its position.
+   *
+   * This helper function creates an icon element with appropriate margin spacing
+   * based on the icon's position relative to the button text. Icons positioned
+   * on the left get right margin, icons on the right get left margin, and
+   * icon-only buttons have no margin.
+   *
+   * @param {string} iconName - The name of the Modus icon to render
+   * @param {"left" | "right" | "only"} position - The position of the icon relative to text
+   * @returns {JSX.Element} The rendered icon element with appropriate styling
+   * @private
+   */
   const renderIcon = (
     iconName: string,
     position: "left" | "right" | "only"
@@ -80,7 +117,18 @@ export default function ModusButton({
     );
   };
 
-  // Determine content based on icon position
+  /**
+   * Determines and renders the button content based on icon position.
+   *
+   * This function handles the complex logic of combining icons and text content
+   * based on the iconPosition prop. It supports three modes:
+   * - "left": Icon appears before text
+   * - "right": Icon appears after text
+   * - "only": Only the icon is displayed (text is hidden)
+   *
+   * @returns {ReactNode} The rendered content with proper icon and text arrangement
+   * @private
+   */
   const renderContent = () => {
     if (!icon) {
       return children;
@@ -108,7 +156,17 @@ export default function ModusButton({
     }
   };
 
-  // Handle aria-label for icon-only buttons
+  /**
+   * Generates appropriate ARIA label for accessibility.
+   *
+   * This function ensures proper accessibility by generating ARIA labels
+   * for icon-only buttons. If no explicit ariaLabel is provided and the
+   * button is icon-only, it uses the text content as the aria-label.
+   * This ensures screen readers can properly announce the button's purpose.
+   *
+   * @returns {string | undefined} The appropriate ARIA label or undefined
+   * @private
+   */
   const getAriaLabel = () => {
     if (ariaLabel) return ariaLabel;
     if (iconPosition === "only" && typeof children === "string") {

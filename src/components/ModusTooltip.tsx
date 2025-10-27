@@ -36,7 +36,7 @@ const ModusTooltip = forwardRef<HTMLModusWcTooltipElement, ModusTooltipProps>(
   (
     {
       content,
-      position = 'auto',
+      position = "auto",
       disabled = false,
       forceOpen = false,
       tooltipId,
@@ -46,6 +46,20 @@ const ModusTooltip = forwardRef<HTMLModusWcTooltipElement, ModusTooltipProps>(
     },
     ref
   ) => {
+    /**
+     * Normalizes children to ensure proper tooltip behavior.
+     *
+     * This memoized function handles different child scenarios:
+     * - No children: Returns null
+     * - Single child: Returns the child as-is
+     * - Multiple children: Wraps them in a span with proper styling
+     *
+     * The normalization ensures that the tooltip can properly attach to
+     * the child element(s) and handle hover events correctly.
+     *
+     * @returns {ReactNode | null} The normalized child element(s)
+     * @private
+     */
     const normalizedChild = useMemo(() => {
       const childArray = Children.toArray(children);
       if (childArray.length === 0) {

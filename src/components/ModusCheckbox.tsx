@@ -18,7 +18,7 @@ export interface ModusCheckboxProps {
   /** Whether the checkbox is required. */
   required?: boolean;
   /** The size of the checkbox. */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   /** The ID of the input element. */
   inputId?: string;
   /** The tab index of the input element. */
@@ -26,7 +26,7 @@ export interface ModusCheckboxProps {
   /** A custom CSS class to apply to the checkbox. */
   customClass?: string;
   /** The ARIA label for the checkbox. */
-  'aria-label'?: string;
+  "aria-label"?: string;
   /** A callback function to handle input changes. */
   onInputChange?: (event: CustomEvent<InputEvent>) => void;
   /** A callback function to handle input focus. */
@@ -38,22 +38,49 @@ export interface ModusCheckboxProps {
 }
 
 /**
- * Renders a Modus checkbox component.
+ * Renders a Modus checkbox component with critical bug workaround.
+ *
+ * ⚠️ IMPORTANT: This component includes a workaround for a critical value inversion bug
+ * in the underlying ModusWcCheckbox web component. The value property returns the
+ * opposite of the actual checked state, which is automatically corrected.
+ *
+ * @example
+ * // Basic checkbox
+ * <ModusCheckbox label="Accept terms" />
+ *
+ * @example
+ * // Controlled checkbox with value change handler
+ * <ModusCheckbox
+ *   label="Subscribe to newsletter"
+ *   value={isSubscribed}
+ *   onValueChange={(event) => setSubscribed(event.detail)}
+ * />
+ *
+ * @example
+ * // Indeterminate checkbox
+ * <ModusCheckbox
+ *   label="Select all"
+ *   indeterminate={true}
+ *   onValueChange={handleSelectAll}
+ * />
+ *
  * @param {ModusCheckboxProps} props - The component props.
  * @returns {JSX.Element} The rendered checkbox component.
+ * @see {@link https://modus.trimble.com/components/checkbox} - Modus Checkbox documentation
+ * @see {@link https://github.com/trimble-oss/modus-web-components/issues} - Known issues
  */
 export default function ModusCheckbox({
   value = false,
   disabled = false,
   indeterminate = false,
   label,
-  name = '',
+  name = "",
   required = false,
-  size = 'md',
+  size = "md",
   inputId,
   inputTabIndex,
   customClass,
-  'aria-label': ariaLabel,
+  "aria-label": ariaLabel,
   onInputChange,
   onInputFocus,
   onInputBlur,
@@ -74,6 +101,18 @@ export default function ModusCheckbox({
     const handleInputBlur = (event: Event) => {
       onInputBlur?.(event as CustomEvent<FocusEvent>);
     };
+    /**
+     * Handles value change events with critical bug fix for value inversion.
+     *
+     * ⚠️ CRITICAL BUG WORKAROUND: The ModusWcCheckbox component has a value
+     * inversion bug where the `value` property returns the opposite of the
+     * actual checked state. This function corrects this by inverting the
+     * raw value before passing it to the parent component.
+     *
+     * @param {Event} event - The input change event from the web component
+     * @private
+     * @see {@link https://github.com/trimble-oss/modus-web-components/issues} - Modus Web Components issue tracker
+     */
     const handleValueChange = (event: Event) => {
       const customEvent = event as CustomEvent<InputEvent>;
       // 🚨 CRITICAL: Handle the value inversion bug

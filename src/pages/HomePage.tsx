@@ -31,6 +31,12 @@ export default function HomePage() {
     );
   }
 
+  /**
+   * Handles navigation to different pages using React Router.
+   *
+   * @param {string} path - The path to navigate to
+   * @private
+   */
   const handleNavigation = (path: string) => {
     navigate(path);
   };

@@ -3,8 +3,21 @@ import DemoExample from "../components/DemoExample";
 import { modusIcons, totalIconCount, categoryCount } from "../data/modusIcons";
 
 /**
- * Renders a page that displays all available Modus icons.
- * @returns {JSX.Element} The rendered icons page.
+ * Renders a comprehensive page that displays all available Modus icons.
+ *
+ * This page provides a complete showcase of the Modus icon library with
+ * interactive features for browsing, searching, and copying icon names.
+ * Icons are organized by category and displayed in a grid layout with
+ * hover effects and click-to-copy functionality.
+ *
+ * @example
+ * // The page automatically displays all icons from modusIcons data
+ * <IconsPage />
+ *
+ * @returns {JSX.Element} The rendered icons page with search and category filtering
+ * @see {@link modusIcons} - Source data for all available icons
+ * @see {@link totalIconCount} - Total number of icons displayed
+ * @see {@link categoryCount} - Number of icon categories
  */
 export default function IconsPage() {
   return (

@@ -7,8 +7,23 @@ import GithubMarkSvg from "../assets/github-mark.svg";
 import GithubMarkWhiteSvg from "../assets/github-mark-white.svg";
 
 /**
- * Renders a page to validate the setup of the Modus 2.0 React App.
- * @returns {JSX.Element} The rendered setup validation page.
+ * Renders a comprehensive setup validation page for the Modus 2.0 React App.
+ *
+ * This page provides a complete validation suite to ensure all components,
+ * themes, and functionality are working correctly. It includes interactive
+ * tests for Modus components, theme switching, modal functionality, and
+ * other critical features of the application.
+ *
+ * The validation page helps developers verify that their setup is correct
+ * and all Modus Design System components are properly integrated.
+ *
+ * @example
+ * // Access the validation page at /setup-validation
+ * <SetupValidationPage />
+ *
+ * @returns {JSX.Element} The rendered setup validation page with interactive tests
+ * @see {@link ModusModal} - Modal component validation
+ * @see {@link ThemeToggleSimple} - Theme switching validation
  */
 export default function SetupValidationPage() {
   const [mounted, setMounted] = useState(false);
@@ -24,24 +39,44 @@ export default function SetupValidationPage() {
     return () => clearTimeout(timer);
   }, []);
 
+  /**
+   * Opens the center modal for testing modal functionality.
+   *
+   * @private
+   */
   const openCenterModal = () => {
     if (centerModalRef.current) {
       centerModalRef.current.openModal();
     }
   };
 
+  /**
+   * Opens the bottom modal for testing different modal positions.
+   *
+   * @private
+   */
   const openBottomModal = () => {
     if (bottomModalRef.current) {
       bottomModalRef.current.openModal();
     }
   };
 
+  /**
+   * Closes the center modal.
+   *
+   * @private
+   */
   const closeCenterModal = () => {
     if (centerModalRef.current) {
       centerModalRef.current.closeModal();
     }
   };
 
+  /**
+   * Closes the bottom modal.
+   *
+   * @private
+   */
   const closeBottomModal = () => {
     if (bottomModalRef.current) {
       bottomModalRef.current.closeModal();

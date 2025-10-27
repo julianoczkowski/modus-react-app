@@ -1,6 +1,31 @@
 import { lazy } from "react";
 
-// Route configuration for demo pages
+/**
+ * Route configuration for demo pages using React lazy loading.
+ *
+ * This configuration defines all demo page routes with lazy-loaded components
+ * to improve initial bundle size and performance. Each route object contains
+ * a path and a lazy-loaded component that will be loaded on-demand when
+ * the route is accessed.
+ *
+ * The lazy loading pattern helps reduce the initial JavaScript bundle size
+ * by splitting demo pages into separate chunks that are only loaded when needed.
+ *
+ * @example
+ * // Adding a new demo route
+ * {
+ *   path: "/demos/new-component-demo",
+ *   component: lazy(() => import("../demos/new-component-demo/page")),
+ * }
+ *
+ * @example
+ * // Using in router configuration
+ * {demoRoutes.map(({ path, component: Component }) => (
+ *   <Route key={path} path={path} element={<Component />} />
+ * ))}
+ *
+ * @see {@link https://react.dev/reference/react/lazy} - React lazy loading documentation
+ */
 export const demoRoutes = [
   {
     path: "/demos/button-demo",

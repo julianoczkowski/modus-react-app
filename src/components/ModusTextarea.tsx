@@ -62,14 +62,14 @@ export interface ModusTextareaProps {
  * @returns {JSX.Element} The rendered textarea component.
  */
 export default function ModusTextarea({
-  value = '',
+  value = "",
   label,
   placeholder,
   helperText,
   errorText,
   validText,
   feedback,
-  size = 'md',
+  size = "md",
   rows,
   maxLength,
   minLength,
@@ -84,6 +84,16 @@ export default function ModusTextarea({
 }: ModusTextareaProps) {
   const textareaRef = useRef<HTMLModusWcTextareaElement>(null);
 
+  /**
+   * Computes the appropriate feedback configuration based on provided props.
+   *
+   * This memoized function determines the feedback level and message by
+   * checking props in priority order: feedback > errorText > validText > helperText.
+   * This ensures consistent feedback display while allowing flexible prop usage.
+   *
+   * @returns {InputFeedbackProp | undefined} The computed feedback configuration
+   * @private
+   */
   const computedFeedback = useMemo<InputFeedbackProp | undefined>(() => {
     if (feedback) {
       return feedback;

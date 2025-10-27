@@ -49,9 +49,9 @@ export interface ModusUtilityPanelProps {
  */
 export default function ModusUtilityPanel({
   expanded = false,
-  position = 'right',
+  position = "right",
   pushContent = false,
-  panelWidth = '312px',
+  panelWidth = "312px",
   className,
   children,
   headerSlot,
@@ -67,6 +67,16 @@ export default function ModusUtilityPanel({
 }: ModusUtilityPanelProps) {
   const panelRef = useRef<HTMLModusWcUtilityPanelElement>(null);
 
+  /**
+   * Resolves the target element for content pushing functionality.
+   *
+   * This memoized function determines which element should be pushed when
+   * the utility panel is expanded. It checks for targetElement first,
+   * then falls back to querying the DOM using targetSelector.
+   *
+   * @returns {HTMLElement | undefined} The resolved target element or undefined
+   * @private
+   */
   const resolvedTarget = useMemo(() => {
     if (targetElement) return targetElement;
     if (typeof document === "undefined") return undefined;
@@ -104,11 +114,27 @@ export default function ModusUtilityPanel({
     }
   }, [expanded, pushContent, resolvedTarget, position]);
 
+  /**
+   * Handles the panel opened event and updates state accordingly.
+   *
+   * This callback is triggered when the utility panel opens and calls
+   * the appropriate event handlers while updating the toggle state.
+   *
+   * @private
+   */
   const handlePanelOpened = useCallback(() => {
     onPanelOpened?.();
     onToggle?.(false);
   }, [onPanelOpened, onToggle]);
 
+  /**
+   * Handles the panel closed event and updates state accordingly.
+   *
+   * This callback is triggered when the utility panel closes and calls
+   * the appropriate event handlers while updating the toggle state.
+   *
+   * @private
+   */
   const handlePanelClosed = useCallback(() => {
     onPanelClosed?.();
     onToggle?.(true);

@@ -1,5 +1,3 @@
-
-
 import { useEffect, useRef, useState } from "react";
 import { ModusWcTable } from "@trimble-oss/moduswebcomponents-react";
 
@@ -18,11 +16,14 @@ export interface TableColumn {
   /** Whether the column is sortable. */
   sortable?: boolean;
   /** The type of editor to use for this column. */
-  editor?: 'number' | 'text' | 'autocomplete' | 'date' | 'custom';
+  editor?: "number" | "text" | "autocomplete" | "date" | "custom";
   /** A function to render the cell content. */
   cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;
   /** A function to render a custom editor. */
-  customEditorRenderer?: (value: unknown, onCommit: (value: unknown) => void) => HTMLElement;
+  customEditorRenderer?: (
+    value: unknown,
+    onCommit: (value: unknown) => void
+  ) => HTMLElement;
 }
 
 /**
@@ -49,13 +50,13 @@ export interface ModusTableProps {
   /** Whether to show the page size selector. */
   showPageSizeSelector?: boolean;
   /** The row selection mode. */
-  selectable?: 'none' | 'single' | 'multi';
+  selectable?: "none" | "single" | "multi";
   /** The IDs of the selected rows. */
   selectedRowIds?: string[];
   /** Whether the table is sortable. */
   sortable?: boolean;
   /** The density of the table. */
-  density?: 'compact' | 'comfortable' | 'relaxed';
+  density?: "compact" | "comfortable" | "relaxed";
   /** Whether the table is editable. */
   editable?: boolean | ((row: unknown) => boolean);
   /** Whether to show a hover effect on rows. */
@@ -67,7 +68,9 @@ export interface ModusTableProps {
   /** The ARIA label for the table. */
   ariaLabel?: string;
   /** A callback function to handle the start of a cell edit. */
-  onCellEditStart?: (event: CustomEvent<{ rowIndex: number; colId: string }>) => void;
+  onCellEditStart?: (
+    event: CustomEvent<{ rowIndex: number; colId: string }>
+  ) => void;
   /** A callback function to handle the commit of a cell edit. */
   onCellEditCommit?: (
     event: CustomEvent<{
@@ -78,19 +81,61 @@ export interface ModusTableProps {
     }>
   ) => void;
   /** A callback function to handle sort changes. */
-  onSortChange?: (event: CustomEvent<Array<{ columnId: string; direction: 'asc' | 'desc' }>>) => void;
+  onSortChange?: (
+    event: CustomEvent<Array<{ columnId: string; direction: "asc" | "desc" }>>
+  ) => void;
   /** A callback function to handle pagination changes. */
-  onPaginationChange?: (event: CustomEvent<{ currentPage: number; pageSize: number }>) => void;
+  onPaginationChange?: (
+    event: CustomEvent<{ currentPage: number; pageSize: number }>
+  ) => void;
   /** A callback function to handle row clicks. */
   onRowClick?: (event: CustomEvent<{ row: unknown; index: number }>) => void;
   /** A callback function to handle row selection changes. */
-  onRowSelectionChange?: (event: CustomEvent<{ selectedRows: unknown[]; selectedRowIds: string[] }>) => void;
+  onRowSelectionChange?: (
+    event: CustomEvent<{ selectedRows: unknown[]; selectedRowIds: string[] }>
+  ) => void;
 }
 
 /**
- * Renders a Modus table component.
+ * Renders a Modus table component with advanced features.
+ *
+ * This component provides a comprehensive data table with sorting, pagination,
+ * selection, editing, and other advanced features. It supports both controlled
+ * and uncontrolled modes for maximum flexibility.
+ *
+ * @example
+ * // Basic table
+ * <ModusTable
+ *   columns={columns}
+ *   data={data}
+ * />
+ *
+ * @example
+ * // Paginated table with selection
+ * <ModusTable
+ *   columns={columns}
+ *   data={data}
+ *   paginated={true}
+ *   selectable="single"
+ *   onRowSelectionChange={handleSelection}
+ * />
+ *
+ * @example
+ * // Editable table with custom cell renderers
+ * <ModusTable
+ *   columns={columns}
+ *   data={data}
+ *   editable={true}
+ *   onCellEditCommit={handleCellEdit}
+ *   density="compact"
+ *   zebra={true}
+ * />
+ *
  * @param {ModusTableProps} props - The component props.
  * @returns {JSX.Element} The rendered table component.
+ * @see {@link https://modus.trimble.com/components/table} - Modus Table documentation
+ * @see {@link TableColumn} - Column configuration interface
+ * @see {@link TableData} - Data row interface
  */
 export default function ModusTable({
   columns,
@@ -99,10 +144,10 @@ export default function ModusTable({
   pageSizeOptions = [5, 10, 15],
   paginated = false,
   showPageSizeSelector = true,
-  selectable = 'none',
+  selectable = "none",
   selectedRowIds,
   sortable = true,
-  density = 'comfortable',
+  density = "comfortable",
   editable = false,
   hover = true,
   zebra = false,
