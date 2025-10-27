@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import ModusButton from "../components/ModusButton";
 import { DemoExampleClean } from "../components/DemoExample";
 
+/**
+ * Renders the home page of the application.
+ * @returns {JSX.Element} The rendered home page.
+ */
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
   const navigate = useNavigate();

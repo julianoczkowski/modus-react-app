@@ -342,8 +342,12 @@ const categories = [
   { name: "Appearance", value: "appearance" },
 ];
 
+/**
+ * Renders a gallery of component demos.
+ * @returns {JSX.Element} The rendered component gallery page.
+ */
 export default function ComponentsDemo() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const filteredComponents =
     selectedCategory === "all"

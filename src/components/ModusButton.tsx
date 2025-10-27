@@ -1,46 +1,62 @@
 import { ModusWcButton } from "@trimble-oss/moduswebcomponents-react";
 import type { ReactNode } from "react";
 
+/**
+ * Props for the ModusButton component.
+ */
 interface ModusButtonProps {
-  // Button appearance
-  color?: "primary" | "secondary" | "tertiary" | "warning" | "danger";
-  variant?: "filled" | "outlined" | "borderless";
-  size?: "xs" | "sm" | "md" | "lg";
-  shape?: "rectangle" | "square" | "circle";
+  /** The color of the button. */
+  color?: 'primary' | 'secondary' | 'tertiary' | 'warning' | 'danger';
+  /** The variant of the button. */
+  variant?: 'filled' | 'outlined' | 'borderless';
+  /** The size of the button. */
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+  /** The shape of the button. */
+  shape?: 'rectangle' | 'square' | 'circle';
 
-  // Button behavior
+  /** Whether the button is disabled. */
   disabled?: boolean;
+  /** Whether the button should take up the full width of its container. */
   fullWidth?: boolean;
+  /** Whether the button is pressed. */
   pressed?: boolean;
-  type?: "button" | "submit" | "reset";
+  /** The type of the button. */
+  type?: 'button' | 'submit' | 'reset';
 
-  // Content
+  /** The content to display inside the button. */
   children?: ReactNode;
+  /** An icon to display in the button. */
   icon?: string;
-  iconPosition?: "left" | "right" | "only";
+  /** The position of the icon relative to the button text. */
+  iconPosition?: 'left' | 'right' | 'only';
 
-  // Accessibility
+  /** The ARIA label for the button. */
   ariaLabel?: string;
 
-  // Events
+  /** A callback function to handle button clicks. */
   onButtonClick?: () => void;
 
-  // Styling
+  /** A custom CSS class to apply to the button. */
   className?: string;
 }
 
+/**
+ * Renders a Modus button component.
+ * @param {ModusButtonProps} props - The component props.
+ * @returns {JSX.Element} The rendered button component.
+ */
 export default function ModusButton({
-  color = "primary",
-  variant = "filled",
-  size = "md",
-  shape = "rectangle",
+  color = 'primary',
+  variant = 'filled',
+  size = 'md',
+  shape = 'rectangle',
   disabled = false,
   fullWidth = false,
   pressed = false,
-  type = "button",
+  type = 'button',
   children,
   icon,
-  iconPosition = "left",
+  iconPosition = 'left',
   ariaLabel,
   onButtonClick,
   className,

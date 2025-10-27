@@ -6,42 +6,77 @@ import { ModusWcSelect } from "@trimble-oss/moduswebcomponents-react";
 type SelectSize = "sm" | "md" | "lg";
 type FeedbackLevel = "error" | "info" | "success" | "warning";
 
+/**
+ * Represents an option in a select component.
+ */
 export interface ModusSelectOption {
+  /** The text to display for the option. */
   label: string;
+  /** The value of the option. */
   value: string;
+  /** Whether the option is disabled. */
   disabled?: boolean;
 }
 
+/**
+ * Represents feedback for a select component.
+ */
 export interface ModusSelectFeedback {
+  /** The severity level of the feedback. */
   level: FeedbackLevel;
+  /** The message to display as feedback. */
   message?: string;
 }
 
+/**
+ * Props for the ModusSelect component.
+ */
 export interface ModusSelectProps {
+  /** The options to display in the select component. */
   options: ModusSelectOption[];
+  /** The value of the select component. */
   value?: string;
+  /** The label for the select component. */
   label?: string;
+  /** The name of the select component. */
   name?: string;
+  /** The size of the select component. */
   size?: SelectSize;
+  /** Whether the select component is required. */
   required?: boolean;
+  /** Whether the select component is disabled. */
   disabled?: boolean;
+  /** Whether the select component has a border. */
   bordered?: boolean;
+  /** The ID of the input element. */
   inputId?: string;
+  /** The tab index of the input element. */
   inputTabIndex?: number;
+  /** A custom CSS class to apply to the select component. */
   customClass?: string;
+  /** Feedback to display for the select component. */
   feedback?: ModusSelectFeedback;
-  "aria-label"?: string;
+  /** The ARIA label for the select component. */
+  'aria-label'?: string;
+  /** A callback function to handle input changes. */
   onInputChange?: (event: CustomEvent<InputEvent>) => void;
+  /** A callback function to handle input focus. */
   onInputFocus?: (event: CustomEvent<FocusEvent>) => void;
+  /** A callback function to handle input blur. */
   onInputBlur?: (event: CustomEvent<FocusEvent>) => void;
 }
 
+/**
+ * Renders a Modus select component.
+ * @param {ModusSelectProps} props - The component props.
+ * @returns {JSX.Element} The rendered select component.
+ */
 export default function ModusSelect({
   options,
-  value = "",
+  value = '',
   label,
   name,
-  size = "md",
+  size = 'md',
   required = false,
   disabled = false,
   bordered = true,
@@ -49,7 +84,7 @@ export default function ModusSelect({
   inputTabIndex,
   customClass,
   feedback,
-  "aria-label": ariaLabel,
+  'aria-label': ariaLabel,
   onInputChange,
   onInputFocus,
   onInputBlur,

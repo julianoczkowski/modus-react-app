@@ -1,17 +1,34 @@
 import type { ReactNode } from "react";
 import ModusButton from "./ModusButton";
 
+/**
+ * Props for the DemoPage component.
+ */
 interface DemoPageProps {
+  /** The title of the demo page. */
   title: string;
+  /** A description of the demo page. */
   description: string;
+  /** The content of the demo page. */
   children: ReactNode;
 }
 
+/**
+ * Renders a standard layout for a demo page.
+ * @param {DemoPageProps} props - The component props.
+ * @param {string} props.title - The title of the demo page.
+ * @param {string} props.description - A description of the demo page.
+ * @param {ReactNode} props.children - The content of the demo page.
+ * @returns {JSX.Element} The rendered demo page component.
+ */
 export default function DemoPage({
   title,
   description,
   children,
 }: DemoPageProps) {
+  /**
+   * Handles the click event for the "Back" button, navigating to the previous page in the browser's history.
+   */
   const handleBackClick = () => {
     window.history.back();
   };

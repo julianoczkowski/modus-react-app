@@ -6,6 +6,10 @@ import ThemeToggleSimple from "../components/ThemeToggleSimple";
 import GithubMarkSvg from "../assets/github-mark.svg";
 import GithubMarkWhiteSvg from "../assets/github-mark-white.svg";
 
+/**
+ * Renders a page to validate the setup of the Modus 2.0 React App.
+ * @returns {JSX.Element} The rendered setup validation page.
+ */
 export default function SetupValidationPage() {
   const [mounted, setMounted] = useState(false);
 

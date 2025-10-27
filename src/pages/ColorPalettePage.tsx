@@ -3,6 +3,10 @@ import { DemoExampleClean } from "../components/DemoExample";
 
 import DemoPage from "../components/DemoPage";
 
+/**
+ * Renders a page that displays the color palette of the application.
+ * @returns {JSX.Element} The rendered color palette page.
+ */
 export default function ColorPalettePage() {
   const [mounted, setMounted] = useState(false);
 

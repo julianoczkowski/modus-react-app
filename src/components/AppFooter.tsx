@@ -1,7 +1,11 @@
-import ReactSvg from "../assets/react.svg";
-import GithubMarkSvg from "../assets/github-mark.svg";
-import GithubMarkWhiteSvg from "../assets/github-mark-white.svg";
+import ReactSvg from '../assets/react.svg';
+import GithubMarkSvg from '../assets/github-mark.svg';
+import GithubMarkWhiteSvg from '../assets/github-mark-white.svg';
 
+/**
+ * Renders the application footer.
+ * @returns {JSX.Element} The rendered footer component.
+ */
 export default function AppFooter() {
   return (
     <footer className="text-center py-4 border-top-default bg-card text-foreground">

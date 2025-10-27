@@ -5,35 +5,57 @@ import { ModusWcSwitch } from "@trimble-oss/moduswebcomponents-react";
 
 type SwitchSize = "sm" | "md" | "lg";
 
+/**
+ * Props for the ModusSwitch component.
+ */
 export interface ModusSwitchProps {
+  /** The value of the switch. */
   value?: boolean;
+  /** Whether the switch is disabled. */
   disabled?: boolean;
+  /** Whether the switch is in an indeterminate state. */
   indeterminate?: boolean;
+  /** Whether the switch is required. */
   required?: boolean;
+  /** The size of the switch. */
   size?: SwitchSize;
+  /** The label for the switch. */
   label?: string;
+  /** The name of the switch. */
   name?: string;
+  /** The ID of the input element. */
   inputId?: string;
+  /** The tab index of the input element. */
   inputTabIndex?: number;
+  /** A custom CSS class to apply to the switch. */
   customClass?: string;
-  "aria-label"?: string;
+  /** The ARIA label for the switch. */
+  'aria-label'?: string;
+  /** A callback function to handle input changes. */
   onInputChange?: (event: CustomEvent<InputEvent>) => void;
+  /** A callback function to handle input focus. */
   onInputFocus?: (event: CustomEvent<FocusEvent>) => void;
+  /** A callback function to handle input blur. */
   onInputBlur?: (event: CustomEvent<FocusEvent>) => void;
 }
 
+/**
+ * Renders a Modus switch component.
+ * @param {ModusSwitchProps} props - The component props.
+ *@returns {JSX.Element} The rendered switch component.
+ */
 export default function ModusSwitch({
   value = false,
   disabled = false,
   indeterminate = false,
   required = false,
-  size = "md",
+  size = 'md',
   label,
   name,
   inputId,
   inputTabIndex,
   customClass,
-  "aria-label": ariaLabel,
+  'aria-label': ariaLabel,
   onInputChange,
   onInputFocus,
   onInputBlur,

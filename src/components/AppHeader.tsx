@@ -2,9 +2,17 @@ import { ModusWcButton } from "@trimble-oss/moduswebcomponents-react";
 import { useNavigate } from "react-router-dom";
 import ThemeSwitcherDropdown from "./ThemeSwitcherDropdown";
 
+/**
+ * Renders the application header, including navigation links and a theme switcher.
+ * @returns {JSX.Element} The rendered header component.
+ */
 export default function AppHeader() {
   const navigate = useNavigate();
 
+  /**
+   * Navigates to the specified path using the `useNavigate` hook.
+   * @param {string} path - The path to navigate to.
+   */
   const handleNavigation = (path: string) => {
     navigate(path);
   };

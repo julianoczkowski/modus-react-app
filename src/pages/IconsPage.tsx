@@ -2,6 +2,10 @@ import DemoPage from "../components/DemoPage";
 import DemoExample from "../components/DemoExample";
 import { modusIcons, totalIconCount, categoryCount } from "../data/modusIcons";
 
+/**
+ * Renders a page that displays all available Modus icons.
+ * @returns {JSX.Element} The rendered icons page.
+ */
 export default function IconsPage() {
   return (
     <DemoPage

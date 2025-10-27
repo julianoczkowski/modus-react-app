@@ -13,25 +13,44 @@ export type StepperColor =
   | "error"
   | "neutral";
 
+/**
+ * Represents a single step in a stepper component.
+ */
 export interface ModusStepperItem {
+  /** The label for the step. */
   label?: string;
+  /** The color of the step. */
   color?: StepperColor;
+  /** The content of the step. */
   content?: string;
+  /** A custom CSS class to apply to the step. */
   customClass?: string;
 }
 
+/**
+ * Props for the ModusStepper component.
+ */
 export interface ModusStepperProps {
+  /** The steps to display in the stepper. */
   steps: ModusStepperItem[];
-  orientation?: "horizontal" | "vertical";
+  /** The orientation of the stepper. */
+  orientation?: 'horizontal' | 'vertical';
+  /** A custom CSS class to apply to the stepper. */
   customClass?: string;
+  /** The ARIA label for the stepper. */
   ariaLabel?: string;
 }
 
+/**
+ * Renders a Modus stepper component.
+ * @param {ModusStepperProps} props - The component props.
+ * @returns {JSX.Element} The rendered stepper component.
+ */
 export default function ModusStepper({
   steps,
-  orientation = "horizontal",
+  orientation = 'horizontal',
   customClass,
-  ariaLabel = "Workflow progress",
+  ariaLabel = 'Workflow progress',
 }: ModusStepperProps) {
   const stepperRef = useRef<HTMLModusWcStepperElement>(null);
 

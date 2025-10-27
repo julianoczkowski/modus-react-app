@@ -2,82 +2,80 @@ import { useEffect, useRef } from "react";
 import { ModusWcTextInput } from "@trimble-oss/moduswebcomponents-react";
 import type { InputFeedbackProp } from "./ModusInputFeedback";
 
+/**
+ * Props for the ModusTextInput component.
+ */
 interface ModusTextInputProps {
-  // Basic input properties
+  /** The value of the text input. */
   value?: string;
-  type?:
-    | "text"
-    | "password"
-    | "email"
-    | "number"
-    | "search"
-    | "url"
-    | "tel"
-    | "date"
-    | "time";
+  /** The type of the text input. */
+  type?: 'text' | 'password' | 'email' | 'number' | 'search' | 'url' | 'tel' | 'date' | 'time';
+  /** The placeholder text for the text input. */
   placeholder?: string;
+  /** The name of the text input. */
   name?: string;
+  /** The ID of the input element. */
   inputId?: string;
-
-  // Input behavior
+  /** Whether the text input is disabled. */
   disabled?: boolean;
+  /** Whether the text input is read-only. */
   readOnly?: boolean;
+  /** Whether the text input is required. */
   required?: boolean;
+  /** Whether the text input has a border. */
   bordered?: boolean;
-
-  // Input features
+  /** Whether to include a clear button. */
   includeClear?: boolean;
+  /** Whether to include a search icon. */
   includeSearch?: boolean;
+  /** The ARIA label for the clear button. */
   clearAriaLabel?: string;
-
-  // Validation and feedback
+  /** Feedback to display for the text input. */
   feedback?: InputFeedbackProp;
+  /** The maximum allowed length of the input. */
   maxLength?: number;
+  /** The minimum allowed length of the input. */
   minLength?: number;
+  /** A regular expression pattern to validate the input against. */
   pattern?: string;
-
-  // Mobile optimization
-  autoCapitalize?: "off" | "none" | "on" | "sentences" | "words" | "characters";
+  /** The auto-capitalize behavior for the input. */
+  autoCapitalize?: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
+  /** The autocomplete behavior for the input. */
   autoComplete?: string;
-  autoCorrect?: "on" | "off";
-  enterkeyhint?:
-    | "enter"
-    | "done"
-    | "go"
-    | "next"
-    | "previous"
-    | "search"
-    | "send";
-  inputMode?:
-    | "none"
-    | "text"
-    | "decimal"
-    | "numeric"
-    | "tel"
-    | "search"
-    | "email"
-    | "url";
+  /** The auto-correct behavior for the input. */
+  autoCorrect?: 'on' | 'off';
+  /** The enter key hint for the virtual keyboard. */
+  enterkeyhint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+  /** The input mode for the virtual keyboard. */
+  inputMode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+  /** The tab index of the input element. */
   inputTabIndex?: number;
-
-  // Styling and layout
-  size?: "sm" | "md" | "lg";
+  /** The size of the text input. */
+  size?: 'sm' | 'md' | 'lg';
+  /** A custom CSS class to apply to the text input. */
   customClass?: string;
+  /** The label for the text input. */
   label?: string;
-
-  // Accessibility
-  "aria-label"?: string;
-
-  // Events
+  /** The ARIA label for the text input. */
+  'aria-label'?: string;
+  /** A callback function to handle input changes. */
   onInputChange?: (event: CustomEvent<InputEvent>) => void;
+  /** A callback function to handle input focus. */
   onInputFocus?: (event: CustomEvent<FocusEvent>) => void;
+  /** A callback function to handle input blur. */
   onInputBlur?: (event: CustomEvent<FocusEvent>) => void;
 }
 
+/**
+ * Renders a Modus text input component.
+ * @param {ModusTextInputProps} props - The component props.
+ * @returns {JSX.Element} The rendered text input component.
+ */
 export default function ModusTextInput({
-  value = "",
-  type = "text",
-  placeholder = "",
-  name = "",
+  value = '',
+  type = 'text',
+  placeholder = '',
+  name = '',
   inputId,
   disabled = false,
   readOnly = false,
@@ -85,7 +83,7 @@ export default function ModusTextInput({
   bordered = true,
   includeClear = false,
   includeSearch = false,
-  clearAriaLabel = "Clear text",
+  clearAriaLabel = 'Clear text',
   feedback,
   maxLength,
   minLength,
@@ -94,12 +92,12 @@ export default function ModusTextInput({
   autoComplete,
   autoCorrect,
   enterkeyhint,
-  inputMode = "text",
+  inputMode = 'text',
   inputTabIndex,
-  size = "md",
-  customClass = "",
+  size = 'md',
+  customClass = '',
   label,
-  "aria-label": ariaLabel,
+  'aria-label': ariaLabel,
   onInputChange,
   onInputFocus,
   onInputBlur,

@@ -4,30 +4,54 @@ import { ModusWcUtilityPanel } from "@trimble-oss/moduswebcomponents-react";
 
 type UtilityPanelPosition = "left" | "right";
 
+/**
+ * Props for the ModusUtilityPanel component.
+ */
 export interface ModusUtilityPanelProps {
+  /** Whether the utility panel is expanded. */
   expanded?: boolean;
+  /** The position of the utility panel. */
   position?: UtilityPanelPosition;
+  /** Whether the utility panel should push the content. */
   pushContent?: boolean;
+  /** The width of the utility panel. */
   panelWidth?: string;
+  /** A CSS class to apply to the utility panel. */
   className?: string;
+  /** The main content of the utility panel. */
   children?: React.ReactNode;
+  /** The content to display in the header slot. */
   headerSlot?: React.ReactNode;
+  /** The text to display in the header. */
   headerText?: string;
+  /** The content to display in the footer slot. */
   footerSlot?: React.ReactNode;
+  /** The ARIA label for the utility panel. */
   ariaLabel?: string;
+  /** The ARIA expanded state of the utility panel. */
   ariaExpanded?: boolean;
+  /** A callback function to handle the panel opened event. */
   onPanelOpened?: () => void;
+  /** A callback function to handle the panel closed event. */
   onPanelClosed?: () => void;
+  /** A callback function to handle the toggle event. */
   onToggle?: (collapsed: boolean) => void;
+  /** A CSS selector for the target element to push. */
   targetSelector?: string;
+  /** The target element to push. */
   targetElement?: HTMLElement | null;
 }
 
+/**
+ * Renders a Modus utility panel component.
+ * @param {ModusUtilityPanelProps} props - The component props.
+ * @returns {JSX.Element} The rendered utility panel component.
+ */
 export default function ModusUtilityPanel({
   expanded = false,
-  position = "right",
+  position = 'right',
   pushContent = false,
-  panelWidth = "312px",
+  panelWidth = '312px',
   className,
   children,
   headerSlot,

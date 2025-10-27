@@ -27,64 +27,85 @@ interface NavbarTextOverrides {
   search?: string;
 }
 
+/**
+ * Props for the ModusNavbar component.
+ */
 interface ModusNavbarProps {
-  // Layout
+  /** Whether the navbar should be condensed. */
   condensed?: boolean;
-
-  // User information (required)
+  /** The user card information to display. */
   userCard: NavbarUserCard;
-
-  // Visibility controls
+  /** Controls the visibility of different parts of the navbar. */
   visibility?: NavbarVisibility;
-
-  // Menu states
+  /** Whether the main menu is open. */
   mainMenuOpen?: boolean;
+  /** Whether the notifications menu is open. */
   notificationsMenuOpen?: boolean;
+  /** Whether the apps menu is open. */
   appsMenuOpen?: boolean;
+  /** Whether the search input is open. */
   searchInputOpen?: boolean;
+  /** Whether the user menu is open. */
   userMenuOpen?: boolean;
+  /** Whether the condensed menu is open. */
   condensedMenuOpen?: boolean;
-
-  // Search configuration
+  /** The debounce time in milliseconds for search input changes. */
   searchDebounceMs?: number;
-
-  // Text overrides for condensed mode
+  /** Text overrides for condensed mode. */
   textOverrides?: NavbarTextOverrides;
-
-  // Custom styling
+  /** A custom CSS class to apply to the navbar. */
   customClass?: string;
-
-  // Slot content
+  /** The content to display in the main menu. */
   mainMenuContent?: ReactNode;
+  /** The content to display in the notifications menu. */
   notificationsContent?: ReactNode;
+  /** The content to display in the apps menu. */
   appsContent?: ReactNode;
+  /** The content to display at the start of the navbar. */
   startContent?: ReactNode;
+  /** The content to display in the center of the navbar. */
   centerContent?: ReactNode;
+  /** The content to display at the end of the navbar. */
   endContent?: ReactNode;
-
-  // Event handlers
+  /** A callback function to handle AI clicks. */
   onAiClick?: () => void;
+  /** A callback function to handle apps clicks. */
   onAppsClick?: () => void;
+  /** A callback function to handle help clicks. */
   onHelpClick?: () => void;
+  /** A callback function to handle notifications clicks. */
   onNotificationsClick?: () => void;
+  /** A callback function to handle search clicks. */
   onSearchClick?: () => void;
+  /** A callback function to handle sign out clicks. */
   onSignOutClick?: () => void;
+  /** A callback function to handle "My Trimble" clicks. */
   onMyTrimbleClick?: () => void;
+  /** A callback function to handle Trimble logo clicks. */
   onTrimbleLogoClick?: () => void;
+  /** A callback function to handle search input changes. */
   onSearchChange?: (value: string) => void;
-
-  // Menu state change handlers
+  /** A callback function to handle main menu open changes. */
   onMainMenuOpenChange?: (open: boolean) => void;
+  /** A callback function to handle notifications menu open changes. */
   onNotificationsMenuOpenChange?: (open: boolean) => void;
+  /** A callback function to handle apps menu open changes. */
   onAppsMenuOpenChange?: (open: boolean) => void;
+  /** A callback function to handle search input open changes. */
   onSearchInputOpenChange?: (open: boolean) => void;
+  /** A callback function to handle user menu open changes. */
   onUserMenuOpenChange?: (open: boolean) => void;
+  /** A callback function to handle condensed menu open changes. */
   onCondensedMenuOpenChange?: (open: boolean) => void;
-
-  // Accessibility
+  /** The ARIA label for the navbar. */
   ariaLabel?: string;
 }
 
+/**
+ * Renders a Modus navbar component.
+ * @param {ModusNavbarProps} props - The component props.
+ * @returns {JSX.Element} The rendered navbar component.
+ */
 export default function ModusNavbar({
   condensed = false,
   userCard,

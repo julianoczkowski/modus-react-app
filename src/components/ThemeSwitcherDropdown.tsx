@@ -4,12 +4,21 @@ import { useState, useEffect } from "react";
 import ModusDropdownMenu from "./ModusDropdownMenu";
 import type { MenuItem } from "./ModusMenu";
 
+/**
+ * Props for the ThemeSwitcherDropdown component.
+ */
 interface ThemeSwitcherDropdownProps {
+  /** A custom CSS class to apply to the component. */
   className?: string;
 }
 
+/**
+ * Renders the content of the theme switcher dropdown.
+ * @param {ThemeSwitcherDropdownProps} props - The component props.
+ * @returns {JSX.Element} The rendered dropdown content.
+ */
 function ThemeSwitcherDropdownContent({
-  className = "",
+  className = '',
 }: ThemeSwitcherDropdownProps) {
   const { theme, setTheme } = useTheme();
 

@@ -3,6 +3,10 @@ import ModusButton from "../components/ModusButton";
 import DemoExample from "../components/DemoExample";
 import DemoPage from "../components/DemoPage";
 
+/**
+ * Renders a demo page for the ModusButton component.
+ * @returns {JSX.Element} The rendered button demo page.
+ */
 export default function ButtonDemoPage() {
   const [mounted, setMounted] = useState(false);
   const [clickCount, setClickCount] = useState(0);

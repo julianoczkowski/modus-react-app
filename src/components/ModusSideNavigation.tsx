@@ -5,26 +5,44 @@ import type { MenuItem } from "./ModusMenu";
 
 type SideNavSize = "sm" | "md" | "lg";
 
+/**
+ * Props for the ModusSideNavigation component.
+ */
 export interface ModusSideNavigationProps {
+  /** The items to display in the side navigation. */
   items: MenuItem[];
+  /** Whether the side navigation is expanded. */
   expanded?: boolean;
+  /** The default expanded state of the side navigation. */
   defaultExpanded?: boolean;
+  /** Whether to collapse the side navigation when clicking outside of it. */
   collapseOnClickOutside?: boolean;
+  /** The maximum width of the side navigation. */
   maxWidth?: string;
+  /** The size of the side navigation. */
   size?: SideNavSize;
+  /** A custom CSS class to apply to the side navigation. */
   customClass?: string;
+  /** Whether to automatically collapse the side navigation when an item is selected. */
   autoCollapseOnSelect?: boolean;
+  /** A callback function to handle expanded state changes. */
   onExpandedChange?: (expanded: boolean) => void;
+  /** A callback function to handle item selection. */
   onItemSelect?: (item: MenuItem) => void;
 }
 
+/**
+ * Renders a Modus side navigation component.
+ * @param {ModusSideNavigationProps} props - The component props.
+ * @returns {JSX.Element} The rendered side navigation component.
+ */
 export default function ModusSideNavigation({
   items,
   expanded,
   defaultExpanded = false,
   collapseOnClickOutside = true,
-  maxWidth = "256px",
-  size = "md",
+  maxWidth = '256px',
+  size = 'md',
   customClass,
   autoCollapseOnSelect = true,
   onExpandedChange,

@@ -17,43 +17,79 @@ export type ToastPosition =
 
 export type ToastVariant = "info" | "success" | "warning" | "error";
 
+/**
+ * Represents an action button for a toast.
+ */
 export interface ModusToastAction {
+  /** The label for the action button. */
   label: string;
-  color?: "primary" | "secondary" | "tertiary" | "warning" | "danger";
-  variant?: "filled" | "outlined" | "borderless";
-  size?: "xs" | "sm" | "md" | "lg";
+  /** The color of the action button. */
+  color?: 'primary' | 'secondary' | 'tertiary' | 'warning' | 'danger';
+  /** The variant of the action button. */
+  variant?: 'filled' | 'outlined' | 'borderless';
+  /** The size of the action button. */
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+  /** Whether to dismiss the toast when the action is clicked. */
   dismissOnAction?: boolean;
+  /** A callback function to handle action clicks. */
   onClick?: (toastId: string) => void;
 }
 
+/**
+ * Represents a single toast item.
+ */
 export interface ModusToastItem {
+  /** A unique identifier for the toast. */
   id: string;
+  /** The title of the toast. */
   title: string;
+  /** The description of the toast. */
   description?: string;
+  /** The variant of the toast. */
   variant?: ToastVariant;
+  /** Whether the toast can be dismissed. */
   dismissible?: boolean;
+  /** The delay in milliseconds before the toast is automatically dismissed. */
   delay?: number | null;
+  /** The position of the toast. */
   position?: ToastPosition;
+  /** A custom CSS class to apply to the toast. */
   customClass?: string;
+  /** An action button to display in the toast. */
   action?: ModusToastAction;
 }
 
+/**
+ * Props for the ModusToast component.
+ */
 interface ModusToastProps {
+  /** The toasts to display. */
   toasts: ModusToastItem[];
+  /** The default position for toasts. */
   defaultPosition?: ToastPosition;
+  /** The default delay in milliseconds before toasts are automatically dismissed. */
   defaultDelay?: number | null;
+  /** A custom CSS class to apply to the toast container. */
   customClass?: string;
+  /** A CSS class to apply to the toast container. */
   className?: string;
+  /** A callback function to handle toast dismissals. */
   onDismiss?: (toastId: string) => void;
+  /** A callback function to handle toast actions. */
   onAction?: (toastId: string) => void;
 }
 
+/**
+ * Renders a Modus toast component.
+ * @param {ModusToastProps} props - The component props.
+ * @returns {JSX.Element} The rendered toast component.
+ */
 export default function ModusToast({
   toasts,
-  defaultPosition = "top-end",
+  defaultPosition = 'top-end',
   defaultDelay,
   customClass,
-  className = "relative w-full pointer-events-none",
+  className = 'relative w-full pointer-events-none',
   onDismiss,
   onAction,
 }: ModusToastProps) {

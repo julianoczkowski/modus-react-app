@@ -1,36 +1,59 @@
 import { useEffect, useRef } from "react";
 import { ModusWcCheckbox } from "@trimble-oss/moduswebcomponents-react";
 
+/**
+ * Props for the ModusCheckbox component.
+ */
 export interface ModusCheckboxProps {
+  /** The value of the checkbox. */
   value?: boolean;
+  /** Whether the checkbox is disabled. */
   disabled?: boolean;
+  /** Whether the checkbox is in an indeterminate state. */
   indeterminate?: boolean;
+  /** The label for the checkbox. */
   label?: string;
+  /** The name of the checkbox. */
   name?: string;
+  /** Whether the checkbox is required. */
   required?: boolean;
-  size?: "sm" | "md" | "lg";
+  /** The size of the checkbox. */
+  size?: 'sm' | 'md' | 'lg';
+  /** The ID of the input element. */
   inputId?: string;
+  /** The tab index of the input element. */
   inputTabIndex?: number;
+  /** A custom CSS class to apply to the checkbox. */
   customClass?: string;
-  "aria-label"?: string;
+  /** The ARIA label for the checkbox. */
+  'aria-label'?: string;
+  /** A callback function to handle input changes. */
   onInputChange?: (event: CustomEvent<InputEvent>) => void;
+  /** A callback function to handle input focus. */
   onInputFocus?: (event: CustomEvent<FocusEvent>) => void;
+  /** A callback function to handle input blur. */
   onInputBlur?: (event: CustomEvent<FocusEvent>) => void;
+  /** A callback function to handle value changes. */
   onValueChange?: (event: CustomEvent<boolean>) => void;
 }
 
+/**
+ * Renders a Modus checkbox component.
+ * @param {ModusCheckboxProps} props - The component props.
+ * @returns {JSX.Element} The rendered checkbox component.
+ */
 export default function ModusCheckbox({
   value = false,
   disabled = false,
   indeterminate = false,
   label,
-  name = "",
+  name = '',
   required = false,
-  size = "md",
+  size = 'md',
   inputId,
   inputTabIndex,
   customClass,
-  "aria-label": ariaLabel,
+  'aria-label': ariaLabel,
   onInputChange,
   onInputFocus,
   onInputBlur,

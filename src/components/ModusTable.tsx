@@ -3,43 +3,72 @@
 import { useEffect, useRef, useState } from "react";
 import { ModusWcTable } from "@trimble-oss/moduswebcomponents-react";
 
+/**
+ * Represents a column in a table.
+ */
 export interface TableColumn {
+  /** A unique identifier for the column. */
   id: string;
+  /** The header text for the column. */
   header: string;
+  /** The key to access the data for this column in a row object. */
   accessor: string;
+  /** The width of the column. */
   width?: string;
+  /** Whether the column is sortable. */
   sortable?: boolean;
-  editor?: "number" | "text" | "autocomplete" | "date" | "custom";
+  /** The type of editor to use for this column. */
+  editor?: 'number' | 'text' | 'autocomplete' | 'date' | 'custom';
+  /** A function to render the cell content. */
   cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;
-  customEditorRenderer?: (
-    value: unknown,
-    onCommit: (value: unknown) => void
-  ) => HTMLElement;
+  /** A function to render a custom editor. */
+  customEditorRenderer?: (value: unknown, onCommit: (value: unknown) => void) => HTMLElement;
 }
 
+/**
+ * Represents a row of data in a table.
+ */
 export interface TableData {
   [key: string]: unknown;
 }
 
+/**
+ * Props for the ModusTable component.
+ */
 export interface ModusTableProps {
+  /** The columns to display in the table. */
   columns: TableColumn[];
+  /** The data to display in the table. */
   data: TableData[];
+  /** The current page number. */
   currentPage?: number;
+  /** The available page size options. */
   pageSizeOptions?: number[];
+  /** Whether the table is paginated. */
   paginated?: boolean;
+  /** Whether to show the page size selector. */
   showPageSizeSelector?: boolean;
-  selectable?: "none" | "single" | "multi";
+  /** The row selection mode. */
+  selectable?: 'none' | 'single' | 'multi';
+  /** The IDs of the selected rows. */
   selectedRowIds?: string[];
+  /** Whether the table is sortable. */
   sortable?: boolean;
-  density?: "compact" | "comfortable" | "relaxed";
+  /** The density of the table. */
+  density?: 'compact' | 'comfortable' | 'relaxed';
+  /** Whether the table is editable. */
   editable?: boolean | ((row: unknown) => boolean);
+  /** Whether to show a hover effect on rows. */
   hover?: boolean;
+  /** Whether to show zebra striping on rows. */
   zebra?: boolean;
+  /** A custom CSS class to apply to the table. */
   customClass?: string;
+  /** The ARIA label for the table. */
   ariaLabel?: string;
-  onCellEditStart?: (
-    event: CustomEvent<{ rowIndex: number; colId: string }>
-  ) => void;
+  /** A callback function to handle the start of a cell edit. */
+  onCellEditStart?: (event: CustomEvent<{ rowIndex: number; colId: string }>) => void;
+  /** A callback function to handle the commit of a cell edit. */
   onCellEditCommit?: (
     event: CustomEvent<{
       rowIndex: number;
@@ -48,18 +77,21 @@ export interface ModusTableProps {
       updatedRow: unknown;
     }>
   ) => void;
-  onSortChange?: (
-    event: CustomEvent<Array<{ columnId: string; direction: "asc" | "desc" }>>
-  ) => void;
-  onPaginationChange?: (
-    event: CustomEvent<{ currentPage: number; pageSize: number }>
-  ) => void;
+  /** A callback function to handle sort changes. */
+  onSortChange?: (event: CustomEvent<Array<{ columnId: string; direction: 'asc' | 'desc' }>>) => void;
+  /** A callback function to handle pagination changes. */
+  onPaginationChange?: (event: CustomEvent<{ currentPage: number; pageSize: number }>) => void;
+  /** A callback function to handle row clicks. */
   onRowClick?: (event: CustomEvent<{ row: unknown; index: number }>) => void;
-  onRowSelectionChange?: (
-    event: CustomEvent<{ selectedRows: unknown[]; selectedRowIds: string[] }>
-  ) => void;
+  /** A callback function to handle row selection changes. */
+  onRowSelectionChange?: (event: CustomEvent<{ selectedRows: unknown[]; selectedRowIds: string[] }>) => void;
 }
 
+/**
+ * Renders a Modus table component.
+ * @param {ModusTableProps} props - The component props.
+ * @returns {JSX.Element} The rendered table component.
+ */
 export default function ModusTable({
   columns,
   data,
@@ -67,10 +99,10 @@ export default function ModusTable({
   pageSizeOptions = [5, 10, 15],
   paginated = false,
   showPageSizeSelector = true,
-  selectable = "none",
+  selectable = 'none',
   selectedRowIds,
   sortable = true,
-  density = "comfortable",
+  density = 'comfortable',
   editable = false,
   hover = true,
   zebra = false,
